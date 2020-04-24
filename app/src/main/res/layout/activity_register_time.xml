@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/android_coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f1f7">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="#EDF1F7"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Claim your community for Christ!"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:text="Pray for peace on your street and then in your City "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp">
+
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgrounded"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_profile_fill_black" />
+
+
+                            <EditText
+                                android:id="@+id/user_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:hint="Name"
+                                android:inputType="textPersonName"
+                                android:maxLines="1"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_email_black_fill_24dp" />
+
+                            <EditText
+                                android:id="@+id/user_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Email"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_local_phone_black_24dp" />
+
+                            <EditText
+                                android:id="@+id/user_phone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Phone"
+                                android:inputType="phone"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_location_on_black_24dp" />
+
+                            <EditText
+                                android:id="@+id/user_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Address"
+                                android:inputType="text"
+                                android:lines="4"
+                                android:minLines="2"
+                                android:singleLine="true"
+                                android:textSize="18sp"
+                                android:maxLines="4"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgrounded"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_clock_prayer_24dp" />
+
+                            <Button
+                                android:id="@+id/user_Time_Picker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Set Prayer Time"
+                                android:textAllCaps="false"
+                                android:textSize="18sp"
+                                />
+
+                            <TextView
+                                android:id="@+id/user_Time_View"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" Time"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="18sp"
+                                android:layout_marginStart="5dp"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_calendar_24dp" />
+
+                            <Spinner
+                                android:id="@+id/time_spinner"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgrounded"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_gender_24dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Gender"
+                                android:textColor="@color/grayAppText"
+                                android:textSize="18sp"
+                                />
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:paddingVertical="4dp"
+                                android:orientation="horizontal">
+
+                                <RadioButton android:id="@+id/radio_male"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:theme="@style/Theme.MaterialComponents.Light.Dialog.Alert.Bridge"
+                                    android:text="Male"
+                                    android:textColor="@color/grayAppText"
+                                    android:onClick="onRadioButtonClicked"/>
+
+                                <RadioButton android:id="@+id/radio_female"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/grayAppText"
+                                    android:text="Female"
+                                    android:onClick="onRadioButtonClicked"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgrounded"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_church_24dp" />
+
+                            <EditText
+                                android:id="@+id/user_churchname"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Your Church Name"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/bgrounded"
+                            android:orientation="horizontal"
+                            android:padding="15dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_pastor_24dp" />
+
+                            <EditText
+                                android:id="@+id/user_pastorname"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Pastor Name"
+                                android:inputType="textPersonName"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgrounded"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:paddingRight="15dp"
+                                android:src="@drawable/ic_email_black_24dp" />
+                            <EditText
+                                android:id="@+id/user_message"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Your Message "
+                                android:inputType="text"
+                                android:lines="2"
+                                android:minLines="2"
+                                android:gravity="top|left"
+                                android:textSize="18sp"
+                                android:maxLines="32"
+                                tools:ignore="RtlHardcoded" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/get_register_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect"
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:paddingHorizontal="70dp"
+                android:paddingVertical="20dp"
+                android:text="Save and Continue"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                 />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

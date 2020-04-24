@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bottom_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"/>
+    <item android:id="@+id/bottom_bible"
+        android:icon="@drawable/ic_bible"
+        android:title="Bible"/>
+    <item android:id="@+id/bottom_ignite"
+        android:icon="@drawable/ic_ignite"
+        android:title="Ignite"/>
+    <item android:id="@+id/bottom_profile"
+        android:icon="@drawable/ic_profile_24dp"
+        android:title="Profile"/>
+
+</menu>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/landing_page_fragment_container"
+    android:name="com.mystreetprayer.app.alarmclock.ui.AlarmLandingPageFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout="@layout/alarm_fragment_landing_page" />
+

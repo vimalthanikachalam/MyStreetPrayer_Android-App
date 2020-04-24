@@ -1,0 +1,2 @@
+rootProject.name='MyStreetPrayer'
+include ':app'

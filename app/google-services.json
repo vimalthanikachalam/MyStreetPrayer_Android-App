@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "817880854840",
+    "firebase_url": "https://mystreetprayer-d7aa2.firebaseio.com",
+    "project_id": "mystreetprayer-d7aa2",
+    "storage_bucket": "mystreetprayer-d7aa2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817880854840:android:1330e554fd8bcead0fd1cd",
+        "android_client_info": {
+          "package_name": "com.mystreetprayer.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817880854840-r0o05e4hqeptfl7lb05smn8he28q8e1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlUmO_BZbFn3bHU2gXKDCjNlQVlaxqc9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817880854840-r0o05e4hqeptfl7lb05smn8he28q8e1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
