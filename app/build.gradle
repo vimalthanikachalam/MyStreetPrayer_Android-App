@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.mystreetprayer.app"
         manifestPlaceholders = [bootPriority:"999"]
-        minSdkVersion 18
+        minSdkVersion 21
         multiDexEnabled true;
         targetSdkVersion 29
         versionCode 1

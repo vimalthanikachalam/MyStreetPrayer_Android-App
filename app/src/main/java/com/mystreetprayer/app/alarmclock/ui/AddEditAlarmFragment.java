@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -57,8 +58,7 @@ public final class AddEditAlarmFragment extends Fragment {
 
 
         mLabel = (EditText) v.findViewById(R.id.edit_alarm_label);
-        mLabel.setText(alarm.getLabel());
-
+        mLabel.setText(R.string.prayer_time);
         mMon = (CheckBox) v.findViewById(R.id.edit_alarm_mon);
         mTues = (CheckBox) v.findViewById(R.id.edit_alarm_tues);
         mWed = (CheckBox) v.findViewById(R.id.edit_alarm_wed);
@@ -66,6 +66,40 @@ public final class AddEditAlarmFragment extends Fragment {
         mFri = (CheckBox) v.findViewById(R.id.edit_alarm_fri);
         mSat = (CheckBox) v.findViewById(R.id.edit_alarm_sat);
         mSun = (CheckBox) v.findViewById(R.id.edit_alarm_sun);
+
+        Button saveAlarm = (Button) v.findViewById(R.id.alarm_save);
+        saveAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Alarm alarm = getAlarm();
+
+                final Calendar time = Calendar.getInstance();
+                time.set(Calendar.MINUTE, ViewUtils.getTimePickerMinute(mTimePicker));
+                time.set(Calendar.HOUR_OF_DAY, ViewUtils.getTimePickerHour(mTimePicker));
+                alarm.setTime(time.getTimeInMillis());
+
+                alarm.setLabel(mLabel.getText().toString());
+
+                alarm.setDay(Alarm.MON, mMon.isChecked());
+                alarm.setDay(Alarm.TUES, mTues.isChecked());
+                alarm.setDay(Alarm.WED, mWed.isChecked());
+                alarm.setDay(Alarm.THURS, mThurs.isChecked());
+                alarm.setDay(Alarm.FRI, mFri.isChecked());
+                alarm.setDay(Alarm.SAT, mSat.isChecked());
+                alarm.setDay(Alarm.SUN, mSun.isChecked());
+
+                final int rowsUpdated = DatabaseHelper.getInstance(getContext()).updateAlarm(alarm);
+                final int messageId = (rowsUpdated == 1) ? R.string.update_complete : R.string.update_failed;
+
+                Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
+
+                AlarmReceiver.setReminderAlarm(getContext(), alarm);
+
+                getActivity().finish();
+            }
+        });
+
+
 
         setDayCheckboxes(alarm);
 
@@ -81,9 +115,9 @@ public final class AddEditAlarmFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_save:
-                save();
-                break;
+//            case R.id.action_save:
+//                save();
+//                break;
             case R.id.action_delete:
                 delete();
                 break;
@@ -103,37 +137,38 @@ public final class AddEditAlarmFragment extends Fragment {
         mFri.setChecked(alarm.getDay(Alarm.FRI));
         mSat.setChecked(alarm.getDay(Alarm.SAT));
         mSun.setChecked(alarm.getDay(Alarm.SUN));
-    }
-
-    private void save() {
-
-        final Alarm alarm = getAlarm();
-
-        final Calendar time = Calendar.getInstance();
-        time.set(Calendar.MINUTE, ViewUtils.getTimePickerMinute(mTimePicker));
-        time.set(Calendar.HOUR_OF_DAY, ViewUtils.getTimePickerHour(mTimePicker));
-        alarm.setTime(time.getTimeInMillis());
-
-        alarm.setLabel(mLabel.getText().toString());
-
-        alarm.setDay(Alarm.MON, mMon.isChecked());
-        alarm.setDay(Alarm.TUES, mTues.isChecked());
-        alarm.setDay(Alarm.WED, mWed.isChecked());
-        alarm.setDay(Alarm.THURS, mThurs.isChecked());
-        alarm.setDay(Alarm.FRI, mFri.isChecked());
-        alarm.setDay(Alarm.SAT, mSat.isChecked());
-        alarm.setDay(Alarm.SUN, mSun.isChecked());
-
-        final int rowsUpdated = DatabaseHelper.getInstance(getContext()).updateAlarm(alarm);
-        final int messageId = (rowsUpdated == 1) ? R.string.update_complete : R.string.update_failed;
-
-        Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
-
-        AlarmReceiver.setReminderAlarm(getContext(), alarm);
-
-        getActivity().finish();
 
     }
+
+//    private void save() {
+//
+//        final Alarm alarm = getAlarm();
+//
+//        final Calendar time = Calendar.getInstance();
+//        time.set(Calendar.MINUTE, ViewUtils.getTimePickerMinute(mTimePicker));
+//        time.set(Calendar.HOUR_OF_DAY, ViewUtils.getTimePickerHour(mTimePicker));
+//        alarm.setTime(time.getTimeInMillis());
+//
+//        alarm.setLabel(mLabel.getText().toString());
+//
+//        alarm.setDay(Alarm.MON, mMon.isChecked());
+//        alarm.setDay(Alarm.TUES, mTues.isChecked());
+//        alarm.setDay(Alarm.WED, mWed.isChecked());
+//        alarm.setDay(Alarm.THURS, mThurs.isChecked());
+//        alarm.setDay(Alarm.FRI, mFri.isChecked());
+//        alarm.setDay(Alarm.SAT, mSat.isChecked());
+//        alarm.setDay(Alarm.SUN, mSun.isChecked());
+//
+//        final int rowsUpdated = DatabaseHelper.getInstance(getContext()).updateAlarm(alarm);
+//        final int messageId = (rowsUpdated == 1) ? R.string.update_complete : R.string.update_failed;
+//
+//        Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
+//
+//        AlarmReceiver.setReminderAlarm(getContext(), alarm);
+//
+//        getActivity().finish();
+//
+//    }
 
     private void delete() {
 

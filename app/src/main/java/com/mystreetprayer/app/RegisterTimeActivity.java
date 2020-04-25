@@ -1,6 +1,7 @@
 package com.mystreetprayer.app;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mystreetprayer.app.alarmclock.ui.AlarmMainActivity;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -129,6 +131,8 @@ public class RegisterTimeActivity extends AppCompatActivity implements  AdapterV
                         databaseReference.push().setValue(prayerTimeData);
 
 
+                    Intent Alramintent = new Intent(RegisterTimeActivity.this, AlarmMainActivity.class);
+                    startActivity(Alramintent);
 
 //                    databaseReference.push().setValue(prayerTimeData).addOnSuccessListener(new OnSuccessListener<Void>() {
 //                        @Override

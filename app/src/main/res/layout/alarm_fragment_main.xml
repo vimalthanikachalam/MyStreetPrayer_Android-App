@@ -1,31 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <com.mystreetprayer.app.alarmclock.view.EmptyRecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/empty_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/empty_view_text"/>
+<!--    <TextView-->
+<!--        android:id="@+id/empty_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/empty_view_text" />-->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <ImageView
+        android:id="@+id/alarm_emptystate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        app:srcCompat="@drawable/ic_arrow_right_24dp"
-        app:fabSize="auto"/>
+        android:background="@drawable/ic_emptyalarmstate"
+        android:layout_gravity="center"
+        android:layout_marginBottom="64dp"
+        android:visibility="gone"
+        />
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:id="@+id/fab"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom|end"-->
+    <!--        android:layout_marginEnd="32dp"-->
+    <!--        android:layout_marginRight="32dp"-->
+    <!--        android:layout_marginBottom="32dp"-->
+    <!--        app:srcCompat="@drawable/ic_arrow_right_24dp"-->
+    <!--        app:fabSize="auto"/>-->
+
+    <ImageView
+        android:id="@+id/alarm_visiblestate"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="128dp"
+        android:alpha=".8"
+        android:background="@drawable/ic_pray_state"
+        android:visibility="gone"
+        app:layout_anchor="@+id/successVisible"
+        app:layout_anchorGravity="center" />
+
+    <Button
+        android:id="@+id/prayer_reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/ripple_effect"
+        android:drawableStart="@drawable/ic_alarm_black_24dp"
+        android:drawablePadding="16dp"
+        android:padding="18dp"
+        android:text="Set Prayer Reminder"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/successVisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginBottom="120dp"
+        android:visibility="visible"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textAlignment="center"
+        android:text="Your Prayer Time is Set Successfully!"
+        />
+
+    <Button
+        android:id="@+id/prayer_set_done"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect"
+        android:drawablePadding="6dp"
+        android:layout_gravity="center"
+        android:text="Done"
+        android:backgroundTint="@color/green_600"
+        android:layout_marginTop="32dp"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        />
+
+    </LinearLayout>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

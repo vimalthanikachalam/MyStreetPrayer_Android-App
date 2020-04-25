@@ -74,7 +74,7 @@ public final class AlarmReceiver extends BroadcastReceiver {
             public void run() {
                 ringtone.stop();
             }
-        }, 6000);
+        }, 9000);
 
         final NotificationManager manager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

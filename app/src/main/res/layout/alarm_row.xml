@@ -5,11 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="?attr/listPreferredItemHeight"
+    android:layout_height="120dp"
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@color/white"
+    android:elevation="3dp"
     android:foreground="?selectableItemBackground"
     android:clickable="true">
 
@@ -22,6 +24,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:paddingLeft="12dp"
+
         tools:text="7:00"/>
 
     <TextView
@@ -40,10 +44,11 @@
         android:id="@+id/ar_repeat_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_shuffle"
+        android:src="@drawable/ic_repeat"
         android:layout_toRightOf="@+id/ar_am_pm"
         android:layout_toEndOf="@+id/ar_am_pm"
         android:layout_alignTop="@+id/ar_time"
+        android:paddingRight="12dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"/>
 
@@ -61,9 +66,12 @@
 
         <TextView
             android:id="@+id/ar_label"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Get Up"/>
+            android:textSize="22sp"
+            tools:text="Prayer Time" />
 
         <TextView
             android:id="@+id/ar_days"
@@ -81,7 +89,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:tint="@color/accent"
-        app:srcCompat="@drawable/ic_arrow_right_24dp"/>
+        android:tint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_alarm_black_24dp"/>
 
 </RelativeLayout>

@@ -2,6 +2,8 @@
 <resources>
     <color name="textPrimaryColor">#f6ac31</color>
     <color name="textPrimaryDarkColor">#ec6d06</color>
+    <color name="colorAccent">#ef6c00</color>
+    <color name="white">#FFFFFF</color>
 
     <!--Alarm Color Def-->
     <color name="primary">#00BCD4</color>
@@ -22,7 +24,6 @@
     <color name="colorPrimary">#ff9f00</color>
     <color name="colorPrimaryDark">#c78400</color>
     <color name="colorPrimaryLight">#ff9f00</color>
-    <color name="colorAccent">#FF4081</color>
     <color name="colorAccentDark">#F50057</color>
     <color name="colorAccentLight">#FF80AB</color>
 

@@ -23,7 +23,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="10dp"
             android:text="@string/time"
-            tools:text="Time"/>
+            tools:text="Set Your Time"/>
 
         <View
             android:layout_width="match_parent"
@@ -46,7 +46,9 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="10dp"
             android:text="@string/label"
-            tools:text="Label"/>
+            tools:text="Label"
+            android:visibility="gone"
+            />
 
         <View
             android:layout_width="match_parent"
@@ -60,8 +62,9 @@
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
             android:maxLength="15"
+            android:text="Prayer Time"
             android:textColor="@color/secondary_text"
-            android:textStyle="italic"
+            android:visibility="gone"
             android:hint="@string/add_label_hint"
             android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
@@ -71,7 +74,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="10dp"
             android:text="@string/days"
-            tools:text="Days"/>
+            tools:text="Select Days"/>
 
         <View
             android:layout_width="match_parent"
@@ -81,123 +84,139 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2">
+            android:layout_height="54dp"
+            android:columnCount="7"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/spacing_large"
+            >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
-                android:layout_marginBottom="10dp"
-                android:text="@string/monday"
-                tools:text="Monday"
-                />
 
             <CheckBox
                 android:id="@+id/edit_alarm_mon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
-                android:layout_marginBottom="6dp"
-                android:text="@string/tuesday"
-                tools:text="Tuesday"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_gravity="center_horizontal"
+                android:button="@drawable/monday_checkbox"
+                android:layout_margin="4dp"
+                android:layout_marginLeft="32dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:checked="true"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
                 />
+
+
 
             <CheckBox
                 android:id="@+id/edit_alarm_tues"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                app:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
-                android:layout_marginBottom="6dp"
-                android:text="@string/wednesday"
-                tools:text="Wednesday"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_gravity="center_horizontal"
+                android:button="@drawable/tuesday_checkbox"
+                android:layout_margin="4dp"
+                android:checked="true"
+                android:layout_marginLeft="12dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
                 />
+
+
 
             <CheckBox
                 android:id="@+id/edit_alarm_wed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_width="30dp"
+                android:checked="true"
+                android:layout_height="30dp"
+                app:layout_gravity="center_horizontal"
+                android:button="@drawable/wednesday_checkbox"
+                android:layout_margin="4dp"
+                android:layout_marginLeft="12dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:scaleX="1.5"
+                android:scaleY="1.5"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
-                android:layout_marginBottom="6dp"
-                android:text="@string/thursday"
-                tools:text="Thursday"
-                />
 
             <CheckBox
                 android:id="@+id/edit_alarm_thurs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                app:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
-                android:layout_marginBottom="6dp"
-                android:text="@string/friday"
-                tools:text="Friday"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_gravity="center_horizontal"
+                android:button="@drawable/thursday_checkbox"
+                android:layout_margin="4dp"
+                android:checked="true"
+                android:layout_marginLeft="12dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
                 />
+
 
             <CheckBox
                 android:id="@+id/edit_alarm_fri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:checked="true"
+                app:layout_gravity="center_horizontal"
+                android:button="@drawable/friday_checkbox"
+                android:layout_margin="4dp"
+                android:layout_marginLeft="12dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:scaleX="1.5"
+                android:scaleY="1.5"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
-                android:layout_marginBottom="6dp"
-                android:text="@string/saturday"
-                tools:text="Saturday"
-                />
 
             <CheckBox
                 android:id="@+id/edit_alarm_sat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                app:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
-                android:layout_marginBottom="6dp"
-                android:text="@string/sunday"
-                tools:text="Sunday"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_gravity="center_horizontal"
+                android:button="@drawable/saturday_checkbox"
+                android:layout_margin="4dp"
+                android:layout_marginLeft="12dp"
+                android:checked="true"
+                android:focusable="true"
+                android:clickable="true"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
                 />
+
 
             <CheckBox
                 android:id="@+id/edit_alarm_sun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_gravity="center_horizontal"
+                android:button="@drawable/sunday_checkbox"
+                android:layout_margin="4dp"
+                android:checked="true"
+                android:layout_marginLeft="12dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                />
 
 
         </GridLayout>
+
+        <Button
+            android:id="@+id/alarm_save"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:backgroundTint="@color/green_600"
+            android:text="Save"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:background="@drawable/ripple_effect"/>
 
     </LinearLayout>
 

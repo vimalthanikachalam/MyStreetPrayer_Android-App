@@ -46,7 +46,8 @@ public class Fragment_Home extends Fragment {
         registerPrayerTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prayerTimeActivity();
+                Intent prayertimeView = new Intent(getActivity(), RegisterTimeActivity.class);
+                startActivity(prayertimeView);
             }
         });
 
@@ -54,11 +55,6 @@ public class Fragment_Home extends Fragment {
     return rootView;
     }
 
-    //View Navigator
-    private void prayerTimeActivity() {
-        Intent prayertimeView = new Intent(getActivity(), RegisterTimeActivity.class);
-        startActivity(prayertimeView);
-    }
 
 
     @Override
