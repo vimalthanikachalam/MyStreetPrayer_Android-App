@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.mystreetprayer.app"
-        manifestPlaceholders = [bootPriority:"999"]
+        manifestPlaceholders = [bootPriority: "999"]
         minSdkVersion 21
         multiDexEnabled true;
         targetSdkVersion 29
@@ -50,6 +50,13 @@ dependencies {
 
     //Audio Player Library
     implementation 'com.github.jeancsanchez:JcPlayer:2.6.16'
+
+    //Volley for http
+    implementation 'com.android.volley:volley:1.1.1'
+
+    //Image Library
+//    implementation 'com.github.bumptech.glide:glide:4.11.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
 
     implementation 'com.google.firebase:firebase-auth:19.3.0'

@@ -3,51 +3,46 @@
     package="com.mystreetprayer.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.SET_ALARM"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
     <application
-        android:name=".OfflineSongsCache"
+        android:name=".RunFirstInstance"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <!--Begin of Injected Alarm Services-->
-
-        <activity android:name="com.mystreetprayer.app.alarmclock.ui.AlarmMainActivity" />
-
-        <activity android:name="com.mystreetprayer.app.alarmclock.ui.AddEditAlarmActivity" />
+        <activity android:name=".KnowTheTruth"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".Covid19WebPage" /> <!-- Begin of Injected Alarm Services -->
+        <activity android:name=".alarmclock.ui.AlarmMainActivity" />
+        <activity android:name=".alarmclock.ui.AddEditAlarmActivity" />
         <activity
-            android:name="com.mystreetprayer.app.alarmclock.ui.AlarmLandingPageActivity"
+            android:name=".alarmclock.ui.AlarmLandingPageActivity"
             android:theme="@style/AlertLandingPageTheme" />
 
-        <service android:name="com.mystreetprayer.app.alarmclock.service.LoadAlarmsService" />
+        <service android:name=".alarmclock.service.LoadAlarmsService" />
 
-        <receiver android:name="com.mystreetprayer.app.alarmclock.service.LoadAlarmsReceiver" />
-        <receiver android:name="com.mystreetprayer.app.alarmclock.service.AlarmReceiver" />
+        <receiver android:name=".alarmclock.service.LoadAlarmsReceiver" />
+        <receiver android:name=".alarmclock.service.AlarmReceiver" />
+        <receiver android:name=".alarmclock.service.NotificationReceiver" />
         <receiver
-            android:name="com.mystreetprayer.app.alarmclock.service.BootReceiver"
+            android:name=".alarmclock.service.BootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter android:priority="${bootPriority}">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver>
-        <!--End of Injected Alarm Services-->
-
-
+        </receiver> <!-- End of Injected Alarm Services -->
         <activity android:name=".PrayerSongs_Activity" />
         <activity android:name=".RegisterTimeActivity" />
         <activity

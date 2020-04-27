@@ -22,14 +22,63 @@
             android:background="#f2f1f7"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
-                android:id="@+id/image_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                android:src="@drawable/banner"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.7" />
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/relativelayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/verse_img_11"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7" />
+
+                <TextView
+                    android:id="@+id/verse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/image_view"
+                    android:layout_alignTop="@id/image_view"
+                    android:layout_alignRight="@id/image_view"
+                    android:layout_alignBottom="@id/image_view"
+                    android:layout_margin="1dp"
+                    android:padding="6dp"
+                    android:gravity="center"
+                    android:text="Hello"
+                    android:fontFamily="@font/bebus_bold"
+                    android:textSize="22sp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+<!--            <TextView-->
+<!--                android:id="@+id/verse"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="4dp"-->
+<!--                android:paddingStart="8dp"-->
+<!--                android:paddingEnd="8dp"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:fontFamily="@font/bebus_bold"-->
+<!--                android:textSize="23dp"-->
+<!--                android:text="Verse of the day!"-->
+<!--                android:textColor="@color/white"-->
+<!--                />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:scaleType="centerInside"-->
+<!--                android:src="@drawable/banner"-->
+<!--                app:layout_collapseMode="parallax"-->
+<!--                app:layout_collapseParallaxMultiplier="0.7" />-->
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -51,6 +100,9 @@
             android:orientation="vertical"
             android:paddingLeft="12dp"
             android:paddingRight="12dp">
+
+
+
 
             <!-- CardView that contains a Images and texts -->
             <!--Register Prayer Time-->
@@ -458,6 +510,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/covid_19"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:layout_weight="1"

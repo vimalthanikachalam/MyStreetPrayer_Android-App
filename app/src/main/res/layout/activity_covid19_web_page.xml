@@ -6,14 +6,14 @@
     >
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/bible_sr"
+        android:id="@+id/covid19_sr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.mystreetprayer.app.PrayerRequest">
 
 
         <WebView
-            android:id="@+id/kjvwebview"
+            android:id="@+id/covid19web"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
@@ -29,7 +29,7 @@
         android:layout_height="6dp">
 
         <ProgressBar
-            android:id="@+id/kjvProgressBar"
+            android:id="@+id/covidProgressBar"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

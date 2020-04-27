@@ -9,6 +9,8 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -19,8 +21,11 @@ import android.util.SparseBooleanArray;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
+import com.mystreetprayer.app.MainActivity;
+import com.mystreetprayer.app.PrayerSongs_Activity;
 import com.mystreetprayer.app.R;
 import com.mystreetprayer.app.alarmclock.model.Alarm;
 import com.mystreetprayer.app.alarmclock.util.AlarmUtils;
@@ -40,9 +45,11 @@ public final class AlarmReceiver extends BroadcastReceiver {
 
     private static final String TAG = AlarmReceiver.class.getSimpleName();
     private static final String CHANNEL_ID = "alarm_channel";
-
     private static final String BUNDLE_EXTRA = "bundle_extra";
     private static final String ALARM_KEY = "alarm_key";
+
+    private NotificationManagerCompat dailyNotificationManager;
+
 
     private static Ringtone ringtone;
 
@@ -50,67 +57,63 @@ public final class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        final Alarm alarm = intent.getBundleExtra(BUNDLE_EXTRA).getParcelable(ALARM_KEY);
-        if(alarm == null) {
-            Log.e(TAG, "Alarm is null", new NullPointerException());
-            return;
-        }
+    final Alarm alarm = intent.getBundleExtra(BUNDLE_EXTRA).getParcelable(ALARM_KEY);
+        if(alarm ==null)
 
-        final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
-
-        final int id = alarm.notificationId();
-
-
-        Uri alarmsound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        ringtone = RingtoneManager.getRingtone(context, alarmsound);
-        ringtone.play();
-
-        //After 1s stop the alarmclock
-        // You can adjust the time depending upon your requirement.
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ringtone.stop();
-            }
-        }, 9000);
-
-        final NotificationManager manager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        createNotificationChannel(context);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.logo);
-        builder.setColor(ContextCompat.getColor(context, R.color.deep_orange_A400));
-        builder.setContentTitle(context.getString(R.string.app_name));
-        builder.setContentText(alarm.getLabel());
-        builder.setTicker(alarm.getLabel());
-        builder.setVibrate(new long[] {1000,500,1000,500,1000,500});
-//      builder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
-        builder.setContentIntent(launchAlarmLandingPage(context, alarm));
-        builder.setAutoCancel(true);
-        builder.setPriority(Notification.PRIORITY_HIGH);
-//      PendingIntent onDestroy = onCancel();
-//      builder.addAction(R.drawable.ic_repeat_black_24dp, context.getString(R.string.action_delete), onCancel(context));
-        manager.notify(id, builder.build());
-        //Reset Alarm manually
-        setReminderAlarm(context, alarm);
+    {
+        Log.e(TAG, "Alarm is null", new NullPointerException());
+        return;
     }
 
-//    public static PendingIntent onCancel(Context context){
-//        ringtone.stop();
-//        return null;
-//    }
+
+    final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    final int id = alarm.notificationId();
 
 
+    Uri alarmsound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+    ringtone =RingtoneManager.getRingtone(context,alarmsound);
+        ringtone.play();
+
+    //After 1s stop the alarmclock
+    // You can adjust the time depending upon your requirement.
+    final Handler handler = new Handler();
+        handler.postDelayed(new
+
+    Runnable() {
+        @Override
+        public void run () {
+            ringtone.stop();
+        }
+    },9000);
+
+    final NotificationManager manager =
+            (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+    createNotificationChannel(context);
+
+        Bitmap thumbnail = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher_notification);
+
+    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.ic_prayer_request);
+        builder.setLargeIcon(thumbnail);
+        builder.setContentTitle(context.getString(R.string.prayer_desc));
+        builder.setContentText(alarm.getLabel());
+        builder.setTicker(alarm.getLabel());
+        builder.setVibrate(new long[]{1000, 500, 1000, 500, 1000, 500});
+        builder.setContentIntent(
+    launchAlarmLandingPage(context, alarm));
+        builder.setAutoCancel(true);
+        builder.setPriority(Notification.PRIORITY_HIGH);
+        manager.notify(id,builder.build());
+    //Reset Alarm manually
+    setReminderAlarm(context, alarm);
+}
 
     //Convenience method for setting a notification
     public static void setReminderAlarm(Context context, Alarm alarm) {
 
         //Check whether the alarmclock is set to run on any days
-        if(!AlarmUtils.isAlarmActive(alarm)) {
+        if (!AlarmUtils.isAlarmActive(alarm)) {
             //If alarmclock not set to run on any days, cancel any existing notifications for this alarmclock
             cancelReminderAlarm(context, alarm);
             return;
@@ -135,7 +138,7 @@ public final class AlarmReceiver extends BroadcastReceiver {
     }
 
     public static void setReminderAlarms(Context context, List<Alarm> alarms) {
-        for(Alarm alarm : alarms) {
+        for (Alarm alarm : alarms) {
             setReminderAlarm(context, alarm);
         }
     }
@@ -143,6 +146,7 @@ public final class AlarmReceiver extends BroadcastReceiver {
     /**
      * Calculates the actual time of the next alarmclock/notification based on the user-set time the
      * alarmclock should sound each day, the days the alarmclock is set to run, and the current time.
+     *
      * @param alarm Alarm containing the daily time the alarmclock is set to run and days the alarmclock
      *              should run
      * @return A Calendar with the actual time of the next alarmclock.
@@ -164,11 +168,11 @@ public final class AlarmReceiver extends BroadcastReceiver {
             final int index = (startIndex + count) % 7;
             isAlarmSetForDay =
                     daysArray.valueAt(index) && (calendar.getTimeInMillis() > currentTime);
-            if(!isAlarmSetForDay) {
+            if (!isAlarmSetForDay) {
                 calendar.add(Calendar.DAY_OF_MONTH, 1);
                 count++;
             }
-        } while(!isAlarmSetForDay && count < 7);
+        } while (!isAlarmSetForDay && count < 7);
 
         return calendar;
 
@@ -223,17 +227,16 @@ public final class AlarmReceiver extends BroadcastReceiver {
     }
 
     private static void createNotificationChannel(Context ctx) {
-        if(SDK_INT < O) return;
+        if (SDK_INT < O) return;
 
         final NotificationManager mgr = ctx.getSystemService(NotificationManager.class);
-        if(mgr == null) return;
+        if (mgr == null) return;
 
         final String name = ctx.getString(R.string.channel_name);
-        if(mgr.getNotificationChannel(name) == null) {
-            final NotificationChannel channel =
-                    new NotificationChannel(CHANNEL_ID, name, IMPORTANCE_HIGH);
+        if (mgr.getNotificationChannel(name) == null) {
+            final NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, IMPORTANCE_HIGH);
             channel.enableVibration(true);
-            channel.setVibrationPattern(new long[] {1000,500,1000,500,1000,500});
+            channel.setVibrationPattern(new long[]{1000, 500, 1000, 500, 1000, 500});
             channel.setBypassDnd(true);
             mgr.createNotificationChannel(channel);
         }
@@ -246,34 +249,36 @@ public final class AlarmReceiver extends BroadcastReceiver {
 
     }
 
-    private static class ScheduleAlarm {
+private static class ScheduleAlarm {
 
-        @NonNull private final Context ctx;
-        @NonNull private final AlarmManager am;
+    @NonNull
+    private final Context ctx;
+    @NonNull
+    private final AlarmManager am;
 
-        private ScheduleAlarm(@NonNull AlarmManager am, @NonNull Context ctx) {
-            this.am = am;
-            this.ctx = ctx;
-        }
-
-        static ScheduleAlarm with(Context context) {
-            final AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            if(am == null) {
-                throw new IllegalStateException("AlarmManager is null");
-            }
-            return new ScheduleAlarm(am, context);
-        }
-
-        void schedule(Alarm alarm, PendingIntent pi) {
-            if(SDK_INT > LOLLIPOP) {
-                am.setAlarmClock(new AlarmClockInfo(alarm.getTime(), launchAlarmLandingPage(ctx, alarm)), pi);
-            } else if(SDK_INT > KITKAT) {
-                am.setExact(AlarmManager.RTC_WAKEUP, alarm.getTime(), pi);
-            } else {
-                am.set(AlarmManager.RTC_WAKEUP, alarm.getTime(), pi);
-            }
-        }
-
+    private ScheduleAlarm(@NonNull AlarmManager am, @NonNull Context ctx) {
+        this.am = am;
+        this.ctx = ctx;
     }
+
+    static ScheduleAlarm with(Context context) {
+        final AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        if (am == null) {
+            throw new IllegalStateException("AlarmManager is null");
+        }
+        return new ScheduleAlarm(am, context);
+    }
+
+    void schedule(Alarm alarm, PendingIntent pi) {
+        if (SDK_INT > LOLLIPOP) {
+            am.setAlarmClock(new AlarmClockInfo(alarm.getTime(), launchAlarmLandingPage(ctx, alarm)), pi);
+        } else if (SDK_INT > KITKAT) {
+            am.setExact(AlarmManager.RTC_WAKEUP, alarm.getTime(), pi);
+        } else {
+            am.set(AlarmManager.RTC_WAKEUP, alarm.getTime(), pi);
+        }
+    }
+
+}
 
 }
