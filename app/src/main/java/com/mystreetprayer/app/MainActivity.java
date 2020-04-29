@@ -3,6 +3,7 @@ package com.mystreetprayer.app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -123,7 +124,10 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar time = Calendar.getInstance();
         time.setTimeZone(TimeZone.getTimeZone("GMT"));
-        time.set(Calendar.HOUR_OF_DAY, 7);
+        time.set(Calendar.HOUR_OF_DAY, 6);
+        time.set(Calendar.MINUTE, 59);
+        time.set(Calendar.AM_PM, Calendar.AM);
+        time.set(Calendar.SECOND, 10);
 
         Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);

@@ -33,13 +33,21 @@ import com.google.firebase.database.ValueEventListener;
 import com.mystreetprayer.app.alarmclock.service.AlarmReceiver;
 import com.mystreetprayer.app.alarmclock.ui.AlarmMainActivity;
 
+import org.json.JSONObject;
+
+import java.util.Objects;
 import java.util.Random;
 
 import static android.text.TextUtils.isEmpty;
 
 public class Fragment_Home extends Fragment {
 
-    private String res;
+    public static TextView dailyVerse;
+    public static TextView verseAuthor;
+
+    public String myText = "";
+
+
     private ImageView bannerImage;
     private int[] images = {
             R.drawable.bg_getting_started,R.drawable.bg,R.drawable.verse_img_1,
@@ -60,23 +68,18 @@ public class Fragment_Home extends Fragment {
         CardView registerPrayerTime = (CardView) rootView.findViewById(R.id.register_PrayerTime);
         CardView knowthetruth = (CardView) rootView.findViewById(R.id.knowtheTruth);
         CardView covid19page = (CardView) rootView.findViewById(R.id.covid_19);
+        CardView prayerRequestPage = (CardView) rootView.findViewById(R.id.prayer_request);
 
 
-        TextView verse = (TextView) rootView.findViewById(R.id.verse);
+        dailyVerse = (TextView) rootView.findViewById(R.id.daily_verse);
+        verseAuthor = (TextView) rootView.findViewById(R.id.verse_author);
         bannerImage = (ImageView) rootView.findViewById(R.id.image_view);
 
-        //Method Calls
-        loadBibleVerse();
+
+
+        //BindMethod
+        fetchDailyVerseData();
         randomImage();
-
-
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("verse_sp", Context.MODE_PRIVATE);
-        if (sharedPreferences == null) {
-            verse.setText(res);
-        } else {
-            String ver = sharedPreferences.getString("verse", "Verse for Today");
-            verse.setText(ver);
-        }
 
 
 
@@ -114,20 +117,38 @@ public class Fragment_Home extends Fragment {
         });
 
 
-
+        prayerRequestPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent prayerrequstintent = new Intent(getActivity(), PrayerRequest.class);
+                startActivity(prayerrequstintent);
+            }
+        });
 
 
 
         return rootView;
     }
 
+    private void fetchDailyVerseData() {
+        VOTD_Data process = new VOTD_Data();
+        process.execute();
+    }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().setTitle("Home");
+        requireActivity().setTitle("Home");
     }
+
+    //Daily Verse Random Images Pick from Local
+    private void randomImage() {
+        Random random = new Random();
+        bannerImage.setImageResource(images[random.nextInt(images.length)]);
+
+    }
+
 
 
 
@@ -152,17 +173,6 @@ public class Fragment_Home extends Fragment {
 //        AlertDialog alertDialog = builder.create();
 //        alertDialog.show();
 //    }
-
-
-
-
-    //Daily Verse Random Images Pick from Local
-    private void randomImage() {
-        Random random = new Random();
-        bannerImage.setImageResource(images[random.nextInt(images.length)]);
-
-    }
-
 
 
 //    //Daily Verse Random Images Pick from firebase
@@ -200,52 +210,48 @@ public class Fragment_Home extends Fragment {
 
 
     //Load verse for the day using daily manna Api
-    private void loadBibleVerse() {
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.start();
-        String url = "https://beta.ourmanna.com/api/v1/get/?format=text";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    res = response;
-                    SharedPreferences sp = getActivity().getSharedPreferences("verse_sp", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("verse", response);
-                    editor.apply();
-                } catch (StringIndexOutOfBoundsException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        String err = null;
-                        if (error instanceof com.android.volley.NoConnectionError) {
-                            err = "No internet Connection!";
-                        }
-                        try {
-                            if (!isEmpty(err)) {
-                                Toast.makeText(getContext(), err, Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-        int sockettimeout = 3000;
-        RetryPolicy policy = new DefaultRetryPolicy(sockettimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        stringRequest.setRetryPolicy(policy);
-        requestQueue.add(stringRequest);
-    }
-
-
-
-
-
+//    private void loadBibleVerse() {
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
+//        requestQueue.start();
+//
+//        String url = "https://beta.ourmanna.com/api/v1/get/?format=text";
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    res = response;
+//                    SharedPreferences sp = requireActivity().getSharedPreferences("verse_sp", Context.MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = sp.edit();
+//                    editor.putString("verse", response);
+//                    editor.apply();
+//                } catch (StringIndexOutOfBoundsException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//        },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        String err = null;
+//                        if (error instanceof com.android.volley.NoConnectionError) {
+//                            err = "No internet Connection!";
+//                        }
+//                        try {
+//                            if (!isEmpty(err)) {
+//                                Toast.makeText(getContext(), err, Toast.LENGTH_SHORT).show();
+//                            }
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//
+//        int sockettimeout = 3000;
+//        RetryPolicy policy = new DefaultRetryPolicy(sockettimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+//        stringRequest.setRetryPolicy(policy);
+//        requestQueue.add(stringRequest);
+//    }
 
 }

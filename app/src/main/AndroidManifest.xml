@@ -20,9 +20,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".KnowTheTruth"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+        <activity android:name=".PrayerRequest"></activity>
+        <activity
+            android:name=".KnowTheTruth"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Covid19WebPage" /> <!-- Begin of Injected Alarm Services -->
         <activity android:name=".alarmclock.ui.AlarmMainActivity" />
         <activity android:name=".alarmclock.ui.AddEditAlarmActivity" />

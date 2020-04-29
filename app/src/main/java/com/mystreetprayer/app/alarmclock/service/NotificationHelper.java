@@ -1,5 +1,6 @@
 package com.mystreetprayer.app.alarmclock.service;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.provider.Settings;
+import android.widget.TextView;
 
 import androidx.core.app.NotificationCompat;
 
@@ -21,6 +23,7 @@ public class NotificationHelper {
     private Context mContext;
     private static final String NOTIFICATION_CHANNEL_ID = "10001";
 
+
     NotificationHelper(Context context) {
         mContext = context;
     }
@@ -28,10 +31,10 @@ public class NotificationHelper {
     void createNotification()
     {
 
-        Bitmap bigImage = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.verse_img_1);
+        Bitmap bigImage = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.verse_img_2);
         Bitmap thumbnail = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.ic_launcher);
 
-        Intent intent = new Intent(mContext , PrayerSongs_Activity.class);
+        Intent intent = new Intent(mContext , MainActivity.class);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -48,15 +51,17 @@ public class NotificationHelper {
                 .setContentText("Click on the 'Notification' to read the verse!")
                 .setAutoCancel(false)
                 .setLargeIcon(thumbnail)
-                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
-                .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bigImage))
+                .setAutoCancel(true)
+                .setSound(null)
+//                .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bigImage))
+                .setPriority(Notification.PRIORITY_DEFAULT)
                 .setContentIntent(resultPendingIntent);
 
         NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
         {
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_LOW;
             NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "Verse of the day!", importance);
             notificationChannel.enableLights(true);
             notificationChannel.setLightColor(Color.RED);
