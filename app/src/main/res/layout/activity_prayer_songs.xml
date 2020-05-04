@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:visibility="gone"
-        android:background="@color/orange_300"
+        android:background="@color/grey_10"
         />
     
 </RelativeLayout>

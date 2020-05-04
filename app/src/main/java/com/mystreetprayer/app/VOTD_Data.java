@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,15 +15,26 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class VOTD_Data extends AsyncTask<Context, Void, String> {
+public class VOTD_Data extends AsyncTask<Void, Void, Void> {
 
     private String verseData = "";
     private String dailyverse = "";
     private String verseauthor = "";
+    private String dailVersePref = "";
+    private String verseAuthorPref = "";
+    private SharedPreferences sharedPreferences;
+
+    private Context context;
+
+    public VOTD_Data(Context context){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        dailVersePref = sharedPreferences.getString("dailyverse", "");
+        verseAuthorPref = sharedPreferences.getString("verseauthor", "");
+    }
 
 
     @Override
-    protected String doInBackground(Context... params) {
+    protected Void doInBackground(Void... voids) {
 
         try {
             URL url = new URL("https://beta.ourmanna.com/api/v1/get/?format=json");
@@ -42,14 +52,17 @@ public class VOTD_Data extends AsyncTask<Context, Void, String> {
                 verseData  = verseData + line;
             }
 
-
             JSONObject mainObject = new JSONObject(verseData).getJSONObject("verse");
             JSONObject verseObject = mainObject.getJSONObject("details");
 
-
-
             dailyverse = verseObject.getString("text");
             verseauthor = verseObject.getString("reference");
+
+            sharedPreferences
+                    .edit()
+                    .putString("dailyverse", dailyverse)
+                    .putString("verseauthor", verseauthor)
+                    .apply();
 
 
         } catch (IOException | JSONException e) {
@@ -60,11 +73,11 @@ public class VOTD_Data extends AsyncTask<Context, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String aVoid) {
-        super.onPostExecute(String.valueOf(aVoid));
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
 
-        Fragment_Home.dailyVerse.setText(this.dailyverse);
-        Fragment_Home.verseAuthor.setText(this.verseauthor);
+        Fragment_Home.dailyVerse.setText(dailVersePref);
+        Fragment_Home.verseAuthor.setText(verseAuthorPref);
 
     }
 }

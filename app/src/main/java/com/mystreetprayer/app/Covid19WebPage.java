@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Covid19WebPage extends AppCompatActivity {
 
     private WebView webView_covid;
-    ProgressBar progressbarCovid;
+    private ProgressBar progressbarCovid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,7 @@ public class Covid19WebPage extends AppCompatActivity {
             }
         });
 
-
         covidWebView();
-
     }
 
     //Back
@@ -55,7 +53,11 @@ public class Covid19WebPage extends AppCompatActivity {
 
     private void covidWebView() {
 
-        webView_covid.loadUrl("https://www.covid19india.org/");
+        //webView_covid.loadUrl("https://www.covid19india.org/");
+
+        webView_covid.loadUrl("https://worshipsongs-3e1e3.web.app/");
+
+
 
         progressbarCovid.setMax(50);
         WebSettings webSettings= webView_covid.getSettings();

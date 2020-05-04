@@ -3,42 +3,37 @@ package com.mystreetprayer.app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.mystreetprayer.app.alarmclock.service.NotificationReceiver;
 import java.util.Calendar;
 import java.util.Objects;
-import java.util.TimeZone;
+
 
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Analytics
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         //Methods Call
         dailyVerseNotification();
 
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
-
 
         if(savedInstanceState == null ){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -46,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_home_black_24dp);
         }
-
 
 
     }
@@ -98,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
 
                         case R.id.bottom_profile:
-                            selectedFragment = new Fragment_Home();
+                            selectedFragment = new Fragment_Profile();
                             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
                             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_profile_fill);
                             break;
@@ -113,27 +107,28 @@ public class MainActivity extends AppCompatActivity {
             };
 
 
-
-    //logout function
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-    }
-
     private void dailyVerseNotification() {
 
-        Calendar time = Calendar.getInstance();
-        time.setTimeZone(TimeZone.getTimeZone("GMT"));
-        time.set(Calendar.HOUR_OF_DAY, 6);
-        time.set(Calendar.MINUTE, 59);
-        time.set(Calendar.AM_PM, Calendar.AM);
-        time.set(Calendar.SECOND, 10);
+        Calendar calendar = Calendar.getInstance();
+        Calendar currentDate = Calendar.getInstance();
+
+        //Setting time of the day (7 AM here) Notification will be sent everyday.
+        calendar.set(Calendar.HOUR_OF_DAY, 7);
+        calendar.set(Calendar.MINUTE, 00);
+        calendar.set(Calendar.SECOND, 0);
+
+        if(currentDate.after(calendar)){
+            Log.w("Added a day", "1");
+            calendar.add(Calendar.DATE, 1);
+        }
 
         Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
         assert alarmManager != null;
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
 

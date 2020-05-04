@@ -105,7 +105,7 @@ public class PrayerSongs_Activity extends AppCompatActivity {
                     jcAudios.add(JcAudio.createFromURL(songObj.getSongName(), songObj.getSongUrl()));
 
                 }
-                arrayAdapter = new ArrayAdapter<String>(PrayerSongs_Activity.this, android.R.layout.simple_list_item_1, arrayListSongsName){
+                arrayAdapter = new ArrayAdapter<String>(PrayerSongs_Activity.this, android.R.layout.simple_expandable_list_item_1, arrayListSongsName){
                     @NonNull
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

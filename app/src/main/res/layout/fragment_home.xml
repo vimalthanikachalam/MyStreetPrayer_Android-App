@@ -23,7 +23,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/relativelayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" >
@@ -49,7 +48,7 @@
                     android:layout_margin="1dp"
                     android:padding="6dp"
                     android:gravity="center"
-                    android:hint="No Internet!"
+                    android:hint="Fetching Data!"
                     android:layout_above="@+id/verse_author"
                     android:fontFamily="@font/bebus_bold"
                     android:textSize="22sp"
@@ -592,6 +591,7 @@
 
             <!--Testimonial-->
             <androidx.cardview.widget.CardView
+                android:id="@+id/testimonial_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

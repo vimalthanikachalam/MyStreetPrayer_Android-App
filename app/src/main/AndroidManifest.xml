@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PrayerRequest"></activity>
+        <activity android:name=".Testimonial" />
+        <activity android:name=".PrayerRequest" />
         <activity
             android:name=".KnowTheTruth"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -35,7 +36,9 @@
 
         <receiver android:name=".alarmclock.service.LoadAlarmsReceiver" />
         <receiver android:name=".alarmclock.service.AlarmReceiver" />
-        <receiver android:name=".alarmclock.service.NotificationReceiver" />
+        <receiver
+            android:name=".alarmclock.service.NotificationReceiver"
+            android:enabled="true" />
         <receiver
             android:name=".alarmclock.service.BootReceiver"
             android:enabled="true"
@@ -68,6 +71,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

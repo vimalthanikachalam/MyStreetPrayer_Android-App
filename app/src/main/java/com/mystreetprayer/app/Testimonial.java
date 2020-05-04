@@ -13,29 +13,26 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-
 import java.util.Objects;
 
-public class PrayerRequest extends AppCompatActivity {
-
-    private WebView prayerView;
-    private ProgressBar progressbarPrayer;
+public class Testimonial extends AppCompatActivity {
+    private WebView webView_Testimonial;
+    ProgressBar progressbarTestimonial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prayer_request);
-
+        setContentView(R.layout.activity_testimonial);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Prayer Request");
+        getSupportActionBar().setTitle("Testimonial");
 
-        prayerView =(WebView) findViewById(R.id.prayer_request_webView);
-        progressbarPrayer = (ProgressBar) findViewById(R.id.prayerProgressBar);
+        webView_Testimonial =(WebView) findViewById(R.id.testimonialweb);
+        progressbarTestimonial = (ProgressBar) findViewById(R.id.testimonialProgressBar);
 
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.prayer_sr);
+
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.testimonial_sr);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-
             @Override
             public void onRefresh() {
                 covidWebView();
@@ -43,7 +40,9 @@ public class PrayerRequest extends AppCompatActivity {
             }
         });
 
+
         covidWebView();
+
     }
 
     //Back
@@ -55,28 +54,28 @@ public class PrayerRequest extends AppCompatActivity {
 
     private void covidWebView() {
 
-        prayerView.loadUrl("https://mystreetprayer.com/prayer-slot/");
+        webView_Testimonial.loadUrl("https://mystreetprayer.com/testimony/");
 
-        progressbarPrayer.setMax(50);
-        WebSettings webSettings= prayerView.getSettings();
-        prayerView.getSettings().setDomStorageEnabled(true);
-        prayerView.getSettings().setAppCacheEnabled(true);
-        prayerView.getSettings().setLoadsImagesAutomatically(true);
-        prayerView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        progressbarTestimonial.setMax(50);
+        WebSettings webSettings= webView_Testimonial.getSettings();
+        webView_Testimonial.getSettings().setDomStorageEnabled(true);
+        webView_Testimonial.getSettings().setAppCacheEnabled(true);
+        webView_Testimonial.getSettings().setLoadsImagesAutomatically(true);
+        webView_Testimonial.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webSettings.setJavaScriptEnabled(true);
 
-        prayerView.setWebChromeClient(new WebChromeClient(){
+        webView_Testimonial.setWebChromeClient(new WebChromeClient(){
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                progressbarPrayer.setProgress(newProgress);
+                progressbarTestimonial.setProgress(newProgress);
             }
         });
 
-        prayerView.setWebViewClient(new WebViewClient(){
+        webView_Testimonial.setWebViewClient(new WebViewClient(){
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                prayerView.loadUrl("file:///android_asset/error.html");
+                webView_Testimonial.loadUrl("file:///android_asset/error.html");
             }
         });
 
@@ -87,8 +86,8 @@ public class PrayerRequest extends AppCompatActivity {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK:
-                    if (prayerView.canGoBack()) {
-                        prayerView.goBack();
+                    if (webView_Testimonial.canGoBack()) {
+                        webView_Testimonial.goBack();
                     } else {
                         finish();
                     }

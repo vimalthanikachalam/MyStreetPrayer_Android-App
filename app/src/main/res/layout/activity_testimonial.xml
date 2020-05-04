@@ -5,15 +5,24 @@
     android:layout_height="match_parent"
     >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/knowtheTruthToolbar"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme"
+        android:background="@color/orange_A100"
+        android:layout_height="?attr/actionBarSize"
+
+        />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/covid19_sr"
+        android:id="@+id/testimonial_sr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.mystreetprayer.app.Covid19WebPage">
+        tools:context="com.mystreetprayer.app.PrayerRequest">
 
 
         <WebView
-            android:id="@+id/covid19web"
+            android:id="@+id/testimonialweb"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
@@ -29,7 +38,7 @@
         android:layout_height="6dp">
 
         <ProgressBar
-            android:id="@+id/covidProgressBar"
+            android:id="@+id/testimonialProgressBar"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

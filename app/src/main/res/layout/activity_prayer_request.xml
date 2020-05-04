@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PrayerRequest">
+    >
 
-    <Button
-        android:id="@+id/clickme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="150dp"
-        android:text="Click Me!"
-        />
-
-
-
-    <TextView
-        android:layout_margin="10dp"
-        android:textSize="24sp"
-        android:layout_below="@+id/clickme"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/prayer_sr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Data Fetched"
-        />
+        android:layout_height="match_parent"
+        tools:context="com.mystreetprayer.app.PrayerRequest">
 
-    <TextView
-
-            android:layout_margin="10dp"
-            android:textSize="24sp"
+        <WebView
+            android:id="@+id/prayer_request_webView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Verse"
-            />
+            android:layout_height="match_parent" >
+        </WebView>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:layout_gravity="top"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="6dp">
+
+        <ProgressBar
+            android:id="@+id/prayerProgressBar"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
 </RelativeLayout>
