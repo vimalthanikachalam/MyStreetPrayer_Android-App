@@ -53,6 +53,8 @@ public class Fragment_Home extends Fragment {
         CardView covid19page = (CardView) rootView.findViewById(R.id.covid_19);
         CardView prayerRequestPage = (CardView) rootView.findViewById(R.id.prayer_request);
         CardView testimonialPage = (CardView) rootView.findViewById(R.id.testimonial_view);
+        CardView videoPage = (CardView) rootView.findViewById(R.id.videoViewCard);
+
 
 
         dailyVerse = (TextView) rootView.findViewById(R.id.daily_verse);
@@ -116,6 +118,14 @@ public class Fragment_Home extends Fragment {
             public void onClick(View v) {
                 Intent prayerrequstintent = new Intent(getActivity(), Testimonial.class);
                 startActivity(prayerrequstintent);
+            }
+        });
+
+        videoPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent videoIntent = new Intent(getActivity(), VideosActivity.class);
+                startActivity(videoIntent);
             }
         });
 

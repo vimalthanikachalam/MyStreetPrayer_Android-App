@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.mystreetprayer.app.alarmclock.service.NotificationReceiver;
 import java.util.Calendar;
 import java.util.Objects;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Analytics
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("FMC");
 
         //Methods Call
         dailyVerseNotification();
@@ -45,20 +48,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Create an action bar button
+    // Notification Channel
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.notification_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    // Menu Button Inflater Action
+    // Notification Inflater
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == R.id.notification) {
-            // do something here
+            Intent notificationIntent = new Intent(MainActivity.this, NotificationActivity.class);
+            startActivity(notificationIntent);
         }
         return super.onOptionsItemSelected(item);
     }

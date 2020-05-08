@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".CreateNotificationActivity">
+
+
+
+    <EditText
+        android:id="@+id/create_notify_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/create_notify_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="textImeMultiLine"/>
+
+    <EditText
+        android:id="@+id/create_notify_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Web Link"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/create_image_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Image Link (Optional)"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/create_action_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Action Button (Optional) Default Learn More.."
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Priority Order of the Notification!"
+        android:layout_marginBottom="6dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+    <NumberPicker
+        android:id="@+id/create_notify_priority"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Note*: Once you save the notification, it will be visible to all the users! You cannot undo the action."
+        android:textColor="@color/red_A700"
+        />
+</LinearLayout>

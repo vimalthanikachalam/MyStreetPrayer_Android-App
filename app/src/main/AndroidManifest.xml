@@ -19,12 +19,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".CreateNotificationActivity" />
+        <activity android:name=".NotificationActivity">
+            <intent-filter>
+                <action android:name="NOTIFICATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VideosActivity" />
         <activity android:name=".Testimonial" />
-        <activity android:name=".PrayerRequest" />
+        <activity android:name=".PrayerRequest">
+            <intent-filter>
+                <action android:name="PRAYER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".KnowTheTruth"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="BOOKS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Covid19WebPage" /> <!-- Begin of Injected Alarm Services -->
         <activity android:name=".alarmclock.ui.AlarmMainActivity" />
         <activity android:name=".alarmclock.ui.AddEditAlarmActivity" />
@@ -47,7 +66,12 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver> <!-- End of Injected Alarm Services -->
-        <activity android:name=".PrayerSongs_Activity" />
+        <activity android:name=".PrayerSongs_Activity">
+            <intent-filter>
+                <action android:name="PRAYERSONGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".RegisterTimeActivity" />
         <activity
             android:name=".GettingStartedActivity"
@@ -72,6 +96,15 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        <service android:name=".alarmclock.service.KPC_FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimary" />
     </application>
 
 </manifest>

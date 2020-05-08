@@ -71,6 +71,7 @@ public class Fragment_Profile extends Fragment {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
+                Toast.makeText(getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
             }
         });
 

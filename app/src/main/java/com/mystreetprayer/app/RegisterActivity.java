@@ -82,31 +82,39 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                if(phone.length() < 9){
+                    mPhone.setError("Invalid Mobile Number");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(phone)){
+                    mPhone.setError("Mobile No is Required!");
+                }
+
                 progressBar.setVisibility(View.VISIBLE);
 
-                // register the user in firebase
-
+                // Register the user in firebase
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            // send verification link
+                            //Send verification link
 
                             FirebaseUser fuser = fAuth.getCurrentUser();
                             fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(RegisterActivity.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, "Confirmation Email Has been Sent.", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
+                                    Log.d(TAG, "invalid email input " + e.getMessage());
                                 }
                             });
 
-                            Toast.makeText(RegisterActivity.this, "User Created.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("users").document(userID);
                             Map<String,Object> user = new HashMap<>();

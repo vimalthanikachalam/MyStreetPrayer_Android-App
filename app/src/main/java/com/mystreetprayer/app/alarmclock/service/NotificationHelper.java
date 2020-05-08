@@ -44,7 +44,6 @@ public class NotificationHelper {
         mBuilder.setSmallIcon(R.drawable.ic_prayer_request);
         mBuilder.setContentTitle("Verse of the Day!")
                 .setContentText("Click on the 'Notification' to read the verse!")
-                .setAutoCancel(false)
                 .setLargeIcon(thumbnail)
                 .setAutoCancel(true)
                 .setSound(null)

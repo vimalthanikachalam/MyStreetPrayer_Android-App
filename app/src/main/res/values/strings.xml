@@ -70,6 +70,8 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
 
+    <string name="read_more">Read More…</string>
+
     <!-- Notification -->
     <string name="channel_name">KPC Prayer Time</string>
     <!--End of Alarm Strings-->

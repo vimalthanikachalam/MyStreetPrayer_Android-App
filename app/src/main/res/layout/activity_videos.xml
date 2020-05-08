@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/videos_sr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mystreetprayer.app.Covid19WebPage">
+
+
+        <WebView
+            android:id="@+id/video_view_web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        </WebView>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:layout_gravity="top"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="6dp">
+
+        <ProgressBar
+            android:id="@+id/videoProgressBar"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

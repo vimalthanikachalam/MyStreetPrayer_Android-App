@@ -319,6 +319,7 @@
 
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/videoViewCard"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:layout_weight="1"
@@ -331,7 +332,6 @@
                     app:cardUseCompatPadding="true"
                     app:cardElevation="2dp"
                     >
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
