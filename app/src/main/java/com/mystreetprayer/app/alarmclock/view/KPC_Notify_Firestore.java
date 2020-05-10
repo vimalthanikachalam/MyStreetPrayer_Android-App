@@ -7,19 +7,16 @@ public class KPC_Notify_Firestore {
     private String webUrl;
     private String imageUrl;
     private String actionBtn;
-    private int priority;
-
 
 
     public KPC_Notify_Firestore(){
 
     }
 
-    public KPC_Notify_Firestore(String title, String description,String webUrl,String imageUrl, String actionBtn, int priority){
+    public KPC_Notify_Firestore(String title, String description,String webUrl,String imageUrl, String actionBtn){
 
         this.title = title;
         this.description = description;
-        this.priority = priority;
         this.webUrl = webUrl;
         this.imageUrl = imageUrl;
         this.actionBtn = actionBtn;
@@ -41,8 +38,5 @@ public class KPC_Notify_Firestore {
 
     public String getActionBtn() { return actionBtn;}
 
-    public int getPriority() {
-        return priority;
-    }
 
 }

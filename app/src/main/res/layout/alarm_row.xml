@@ -13,7 +13,8 @@
     android:background="@color/white"
     android:elevation="3dp"
     android:foreground="?selectableItemBackground"
-    android:clickable="true">
+    android:clickable="true"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/ar_time"
@@ -21,11 +22,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:gravity="start|bottom"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:paddingLeft="12dp"
-
+        android:paddingStart="12dp"
+        android:paddingEnd="0dp"
         tools:text="7:00"/>
 
     <TextView
@@ -35,7 +35,6 @@
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_alignBaseline="@+id/ar_time"
-        android:layout_toRightOf="@+id/ar_time"
         android:layout_toEndOf="@+id/ar_time"
         tools:text="AM"/>
 
@@ -45,22 +44,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_repeat"
-        android:layout_toRightOf="@+id/ar_am_pm"
         android:layout_toEndOf="@+id/ar_am_pm"
         android:layout_alignTop="@+id/ar_time"
-        android:paddingRight="12dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+        android:paddingEnd="12dp"
+        android:paddingStart="0dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:contentDescription="@string/todo" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@+id/ar_repeat_icon"
         android:layout_toEndOf="@+id/ar_repeat_icon"
-        android:layout_toLeftOf="@+id/ar_icon"
         android:layout_toStartOf="@+id/ar_icon"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_centerVertical="true">
 
@@ -87,9 +83,9 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:tint="@color/colorAccent"
-        app:srcCompat="@drawable/ic_alarm_black_24dp"/>
+        app:srcCompat="@drawable/ic_alarm_black_24dp"
+        android:contentDescription="@string/todo" />
 
 </RelativeLayout>

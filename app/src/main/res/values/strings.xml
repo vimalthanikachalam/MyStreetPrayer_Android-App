@@ -31,7 +31,6 @@
         <item>Saturday</item>
     </string-array>
 
-
     <!--Alarm Strings-->
     <!-- Main Activity/Fragment -->
     <string name="empty_view_text">Press the Floating Action Button to add an alarm!</string>
@@ -72,8 +71,86 @@
 
     <string name="read_more">Read More…</string>
 
-    <!-- Notification -->
     <string name="channel_name">KPC Prayer Time</string>
+    <string name="uploadtitle">Title</string>
+    <string name="uploadDescription">Description</string>
+    <string name="uploadWeb_link">Web Link</string>
+    <string name="uploadImage_link">Image Link (Optional)</string>
+    <string name="uploadAction_button">Action Button (Optional) Default Learn More..</string>
+    <string name="upload_note">Note*: Once you save the notification, it will be visible to all the users! You cannot undo the action.</string>
+    <string name="app_title">Karnataka Prayer Call 24/7</string>
+    <string name="welcome_to_the_app">Welcome to the App!</string>
+    <string name="new_user">New User? Register</string>
+    <string name="memeber">Member Already! Login</string>
+    <string name="todo">TODO</string>
+    <string name="study">Study to Use the word of God Correctly.</string>
+    <string name="theTruth">What is the TRUTH?</string>
+    <string name="read_the_book">Read the Book…</string>
+    <string name="have_you_truely">Have you truly…</string>
+    <string name="newUser">New user?</string>
+    <string name="register_now">Register Now!</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="notifications">Notifications!</string>
+    <string name="worship_songs">Worship Songs</string>
+    <string name="claim_your">Claim your community for Christ!</string>
+    <string name="pray_for_peace">Pray for peace on your street and then in your City</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="set_prayer_time">Set Prayer Time</string>
+    <string name="settime">Time</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="your_church_name">Your Church Name</string>
+    <string name="pastor_name">Pastor Name</string>
+    <string name="your_message">Your Message</string>
+    <string name="save_and_continue">Save and Continue</string>
+    <string name="video_title">Video Title</string>
+    <string name="video_description">Video Description</string>
+    <string name="video_web_link">Video Web Link</string>
+    <string name="video_image_link">Video Image Link</string>
+    <string name="video_count">Video Count with increment of +1</string>
+    <string name="numbers">Numbers</string>
+    <string name="total_video">Total Videos Count</string>
+    <string name="note_once">Note*: Once you save the Video, it will be visible to all the users! You cannot undo this action.</string>
+    <string name="videos">Videos</string>
+    <string name="save">Save</string>
+    <string name="cancle_sound">Stop Alarm</string>
+    <string name="set_prayer_reminder">Set Prayer Reminder</string>
+    <string name="your_prayer_timeSet">Your Prayer Time is Set Successfully!</string>
+    <string name="done">Done</string>
+    <string name="fetching_data">Connecting to Internet!!</string>
+    <string name="verse">--Verse--</string>
+    <string name="register_prayer_time_home">Register Prayer Time</string>
+    <string name="know_the_truth_title">Know the truth</string>
+    <string name="worship_songs_title">Worship Songs</string>
+    <string name="videos_title">Videos</string>
+    <string name="prayer_points">Prayer Points</string>
+    <string name="prayer_request_title">Prayer Request</string>
+    <string name="covid_19_stats">Covid-19 Stats</string>
+    <string name="testimonials_title">Testimonials</string>
+    <string name="user_name_profile">User Name</string>
+    <string name="be_blessed">Be Blessed!</string>
+    <string name="your_prayer_time_profile">Your Prayer Time</string>
+    <string name="contact_us_on_whatsapp">Contact Us on WhatsApp</string>
+    <string name="offering">Offering</string>
+    <string name="visit_our_website">Visit our Website</string>
+    <string name="about_us">About Us</string>
+    <string name="share_the_app">Share the App</string>
+    <string name="give_us_feedback_on_the_app">Give us feedback on the App</string>
+    <string name="log_out">Log Out</string>
+    <string name="title_notify">Title!</string>
+    <string name="description_notify">Description.</string>
+    <string name="song_title">Song Title</string>
+    <string name="jesus_worship_song">Jesus Worship Song</string>
+    <string name="share_the_verse">Share the App</string>
+
+
+    <string name="title_activity_sermons_tabbed">Sermons</string>
+    <string name="tab_text_1">English</string>
+    <string name="tab_text_2">Tamil</string>
+    <string name="tab_text_3">Hindi</string>
+    <string name="title_activity_sermons">SermonsActivity</string>
     <!--End of Alarm Strings-->
 
 </resources>

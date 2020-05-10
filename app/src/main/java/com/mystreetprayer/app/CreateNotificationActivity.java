@@ -21,7 +21,6 @@ import java.util.Objects;
 public class CreateNotificationActivity extends AppCompatActivity {
 
     private EditText editTextTitle, editTextDescription, editTextWebUrl,editTextImageUrl, editTextActionButton;
-    private NumberPicker numberPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +30,8 @@ public class CreateNotificationActivity extends AppCompatActivity {
         editTextTitle = findViewById(R.id.create_notify_title);
         editTextDescription = findViewById(R.id.create_notify_description);
         editTextWebUrl = findViewById(R.id.create_notify_url);
-        numberPicker = findViewById(R.id.create_notify_priority);
         editTextImageUrl = findViewById(R.id.create_image_url);
         editTextActionButton = findViewById(R.id.create_action_btn);
-
-        numberPicker.setMinValue(1);
-        numberPicker.setMaxValue(10);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Create Notification!");
@@ -72,7 +67,6 @@ public class CreateNotificationActivity extends AppCompatActivity {
     private void saveNote() {
         String title = editTextTitle.getText().toString();
         String descriptiom = editTextDescription.getText().toString();
-        int priority = numberPicker.getValue();
         String webUrl = editTextWebUrl.getText().toString();
         String imageUrl = editTextImageUrl.getText().toString();
         String actionButton = editTextActionButton.getText().toString();
@@ -85,7 +79,7 @@ public class CreateNotificationActivity extends AppCompatActivity {
         CollectionReference notebookRef = FirebaseFirestore.getInstance()
                 .collection("NotificationView");
 
-        notebookRef.add(new KPC_Notify_Firestore(title, descriptiom, webUrl, imageUrl,actionButton, priority));
+        notebookRef.add(new KPC_Notify_Firestore(title, descriptiom, webUrl, imageUrl,actionButton));
         Toast.makeText(this, "Notification Added", Toast.LENGTH_SHORT).show();
         finish();
 

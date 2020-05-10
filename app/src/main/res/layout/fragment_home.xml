@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/android_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f2f1f7"
-    >
+    android:background="#f2f1f7">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="220dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="#EDF1F7"
             android:background="#f2f1f7"
+            app:contentScrim="#EDF1F7"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <RelativeLayout
                 android:id="@+id/relativelayout"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent">
 
 
                 <ImageView
                     android:id="@+id/image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
                     android:background="@drawable/verse_img_11"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000"
+                    android:alpha=".3"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
                     app:layout_collapseParallaxMultiplier="0.7" />
 
@@ -41,59 +50,38 @@
                     android:id="@+id/daily_verse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_above="@+id/verse_author"
                     android:layout_alignStart="@id/image_view"
                     android:layout_alignTop="@id/image_view"
                     android:layout_alignEnd="@id/image_view"
                     android:layout_alignBottom="@id/image_view"
                     android:layout_margin="1dp"
-                    android:padding="6dp"
-                    android:gravity="center"
-                    android:hint="Fetching Data!"
-                    android:layout_above="@+id/verse_author"
                     android:fontFamily="@font/bebus_bold"
-                    android:textSize="22sp"
+                    android:gravity="center"
+                    android:hint="@string/fetching_data"
+                    android:padding="6dp"
                     android:textAllCaps="false"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
                 <TextView
                     android:id="@+id/verse_author"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/image_view"
                     android:layout_margin="1dp"
-                    android:paddingEnd="28dp"
-                    android:paddingStart="1dp"
-                    android:paddingBottom="9dp"
-                    android:gravity="end"
-                    android:hint="--Verse--"
                     android:fontFamily="@font/bebus_bold"
-                    android:textSize="22sp"
+                    android:gravity="end"
+                    android:hint="@string/verse"
+                    android:paddingStart="1dp"
+                    android:paddingEnd="28dp"
+                    android:paddingBottom="9dp"
                     android:textAllCaps="false"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
             </RelativeLayout>
 
-<!--            <TextView-->
-<!--                android:id="@+id/verse"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="4dp"-->
-<!--                android:paddingStart="8dp"-->
-<!--                android:paddingEnd="8dp"-->
-<!--                android:textAllCaps="false"-->
-<!--                android:fontFamily="@font/bebus_bold"-->
-<!--                android:textSize="23dp"-->
-<!--                android:text="Verse of the day!"-->
-<!--                android:textColor="@color/white"-->
-<!--                />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/image_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:scaleType="centerInside"-->
-<!--                android:src="@drawable/banner"-->
-<!--                app:layout_collapseMode="parallax"-->
-<!--                app:layout_collapseParallaxMultiplier="0.7" />-->
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -115,8 +103,6 @@
             android:orientation="vertical"
             android:paddingLeft="12dp"
             android:paddingRight="12dp">
-
-
 
 
             <!-- CardView that contains a Images and texts -->
@@ -142,8 +128,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
                         android:background="@drawable/ic_clock"
+                        android:contentDescription="@string/todo"
                         android:padding="22dp" />
 
                     <TextView
@@ -154,7 +141,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:gravity="center_horizontal"
                         android:lineSpacingExtra="12sp"
-                        android:text="Register Prayer Time"
+                        android:text="@string/register_prayer_time_home"
                         android:textSize="18sp" />
 
                     <ImageView
@@ -164,6 +151,7 @@
                         android:layout_marginStart="54dp"
                         android:alpha=".5"
                         android:background="@drawable/ic_arrow_right_24dp"
+                        android:contentDescription="@string/todo"
                         android:padding="18dp" />
 
                 </LinearLayout>
@@ -180,22 +168,19 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/knowtheTruth"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
+                    android:layout_marginEnd="2dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
                     app:cardCornerRadius="6dp"
-                    android:layout_marginEnd="2dp"
-                    app:cardUseCompatPadding="true"
                     app:cardElevation="2dp"
-                    >
-
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -216,15 +201,17 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/ic_bible_book"
-                                android:padding="15dp"/>
+                                android:contentDescription="@string/todo"
+                                android:padding="15dp" />
+
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dip"
+                            android:layout_marginStart="15dip"
                             android:layout_marginTop="6dip"
-                            android:layout_marginRight="6dip"
+                            android:layout_marginEnd="6dip"
                             android:layout_marginBottom="6dip"
                             android:layout_weight="1">
 
@@ -234,7 +221,7 @@
                                 android:layout_marginBottom="6dp"
                                 android:fadingEdge="horizontal"
                                 android:singleLine="true"
-                                android:text="Know the truth"
+                                android:text="@string/know_the_truth_title"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         </RelativeLayout>
 
@@ -248,15 +235,15 @@
                     android:id="@+id/prayer_songs"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
-                    android:layout_weight="1"
                     android:layout_marginStart="2dp"
+                    android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
                     app:cardCornerRadius="6dp"
-                    app:cardUseCompatPadding="true"
-                    app:cardElevation="2dp">
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -277,15 +264,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/ic_prayer_songs"
-                                android:padding="15dp"/>
+                                android:contentDescription="@string/todo"
+                                android:padding="15dp" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dip"
+                            android:layout_marginStart="15dip"
                             android:layout_marginTop="6dip"
-                            android:layout_marginRight="6dip"
+                            android:layout_marginEnd="6dip"
                             android:layout_marginBottom="6dip"
                             android:layout_weight="1">
 
@@ -295,7 +283,7 @@
                                 android:layout_marginBottom="6dp"
                                 android:fadingEdge="horizontal"
                                 android:singleLine="true"
-                                android:text="Worship Songs"
+                                android:text="@string/worship_songs_title"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         </RelativeLayout>
 
@@ -317,21 +305,19 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/videoViewCard"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
+                    android:layout_marginEnd="2dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
                     app:cardCornerRadius="6dp"
-                    android:layout_marginEnd="2dp"
-                    app:cardUseCompatPadding="true"
                     app:cardElevation="2dp"
-                    >
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -352,23 +338,26 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/ic_video"
-                                android:padding="15dp"/>
+                                android:contentDescription="@string/todo"
+                                android:padding="15dp" />
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/ic_live"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginTop="10dp"
-                                android:layout_marginRight="8dp"
-                                android:padding="10dp"/>
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/ic_live"
+                                android:contentDescription="@string/todo"
+                                android:padding="10dp" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dip"
+                            android:layout_marginStart="15dip"
                             android:layout_marginTop="6dip"
-                            android:layout_marginRight="6dip"
+                            android:layout_marginEnd="6dip"
                             android:layout_marginBottom="6dip"
                             android:layout_weight="1">
 
@@ -378,7 +367,7 @@
                                 android:layout_marginBottom="6dp"
                                 android:fadingEdge="horizontal"
                                 android:singleLine="true"
-                                android:text="Videos"
+                                android:text="@string/videos_title"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         </RelativeLayout>
 
@@ -389,17 +378,18 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/prayer_request"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
-                    android:layout_weight="1"
                     android:layout_marginStart="2dp"
+                    android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
                     app:cardCornerRadius="6dp"
-                    app:cardUseCompatPadding="true"
-                    app:cardElevation="2dp">
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -419,8 +409,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:background="@drawable/ic_offering"
-                                android:padding="15dp"/>
+                                android:background="@drawable/ic_prayer_points"
+                                android:contentDescription="@string/todo"
+                                android:padding="15dp" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -438,7 +429,7 @@
                                 android:layout_marginBottom="6dp"
                                 android:fadingEdge="horizontal"
                                 android:singleLine="true"
-                                android:text="Offering"
+                                android:text="@string/prayer_points"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         </RelativeLayout>
 
@@ -462,19 +453,18 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/prayer_request"
+                    android:id="@+id/prayerRequestView"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
+                    android:layout_marginEnd="2dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
                     app:cardCornerRadius="6dp"
-                    android:layout_marginEnd="2dp"
-                    app:cardUseCompatPadding="true"
                     app:cardElevation="2dp"
-                    >
+                    app:cardUseCompatPadding="true">
 
 
                     <LinearLayout
@@ -496,16 +486,17 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/ic_prayer_request"
-                                android:padding="15dp"/>
+                                android:contentDescription="@string/todo"
+                                android:padding="15dp" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dip"
+                            android:layout_marginStart="15dip"
                             android:layout_marginTop="6dip"
-                            android:layout_marginRight="6dip"
+                            android:layout_marginEnd="6dip"
                             android:layout_marginBottom="6dip"
                             android:layout_weight="1">
 
@@ -515,7 +506,7 @@
                                 android:layout_marginBottom="6dp"
                                 android:fadingEdge="horizontal"
                                 android:singleLine="true"
-                                android:text="Prayer Requests"
+                                android:text="@string/prayer_request_title"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         </RelativeLayout>
 
@@ -529,15 +520,15 @@
                     android:id="@+id/covid_19"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
-                    android:layout_weight="1"
                     android:layout_marginStart="2dp"
+                    android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
                     app:cardCornerRadius="6dp"
-                    app:cardUseCompatPadding="true"
-                    app:cardElevation="2dp">
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -558,15 +549,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/ic_covid"
-                                android:padding="15dp"/>
+                                android:contentDescription="@string/todo"
+                                android:padding="15dp" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dip"
+                            android:layout_marginStart="15dip"
                             android:layout_marginTop="6dip"
-                            android:layout_marginRight="6dip"
+                            android:layout_marginEnd="6dip"
                             android:layout_marginBottom="6dip"
                             android:layout_weight="1">
 
@@ -576,7 +568,7 @@
                                 android:layout_marginBottom="6dp"
                                 android:fadingEdge="horizontal"
                                 android:singleLine="true"
-                                android:text="Covid-19 Stats"
+                                android:text="@string/covid_19_stats"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         </RelativeLayout>
 
@@ -611,8 +603,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
                         android:background="@drawable/ic_testimony"
+                        android:contentDescription="@string/todo"
                         android:padding="22dp" />
 
                     <TextView
@@ -622,7 +615,7 @@
                         android:layout_marginStart="32dp"
                         android:gravity="center_horizontal"
                         android:lineSpacingExtra="12sp"
-                        android:text="Testimonials"
+                        android:text="@string/testimonials_title"
                         android:textSize="18sp" />
 
                     <ImageView
@@ -632,6 +625,7 @@
                         android:layout_marginStart="98dp"
                         android:alpha=".5"
                         android:background="@drawable/ic_arrow_right_24dp"
+                        android:contentDescription="@string/todo"
                         android:padding="18dp" />
 
                 </LinearLayout>
@@ -642,7 +636,7 @@
             <!--Spacer-->
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="58dp"/>
+                android:layout_height="58dp" />
 
         </LinearLayout>
 

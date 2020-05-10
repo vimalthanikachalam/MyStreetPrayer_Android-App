@@ -13,10 +13,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-
 import java.util.Objects;
 
-public class PrayerRequest extends AppCompatActivity {
+public class PrayerRequests extends AppCompatActivity {
 
     private WebView prayerView;
     private ProgressBar progressbarPrayer;
@@ -24,26 +23,26 @@ public class PrayerRequest extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prayer_request);
+        setContentView(R.layout.activity_prayer_requests);
 
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Prayer Request");
 
-        prayerView =(WebView) findViewById(R.id.prayer_request_webView);
-        progressbarPrayer = (ProgressBar) findViewById(R.id.prayerProgressBar);
+        prayerView =(WebView) findViewById(R.id.prayerRequestwebView);
+        progressbarPrayer = (ProgressBar) findViewById(R.id.prayerRequestProgressBar);
 
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.prayer_sr);
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.prayerRequestsr);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
             public void onRefresh() {
-                covidWebView();
+                prayerRequestWebView();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
 
-        covidWebView();
+        prayerRequestWebView();
     }
 
     //Back
@@ -53,9 +52,9 @@ public class PrayerRequest extends AppCompatActivity {
         return true;
     }
 
-    private void covidWebView() {
+    private void prayerRequestWebView() {
 
-        prayerView.loadUrl("https://mystreetprayer.com/prayer-slot/");
+        prayerView.loadUrl("https://mystreetprayer.com/prayer-request-user/");
 
         progressbarPrayer.setMax(50);
         WebSettings webSettings= prayerView.getSettings();
@@ -98,6 +97,5 @@ public class PrayerRequest extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
 }

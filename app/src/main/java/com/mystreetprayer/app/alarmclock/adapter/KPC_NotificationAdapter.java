@@ -36,7 +36,6 @@ public class KPC_NotificationAdapter extends FirestoreRecyclerAdapter<KPC_Notify
 
         holder.textViewTitle.setText(model.getTitle());
         holder.textViewDescription.setText(model.getDescription());
-        holder.textViewPriority.setText(String.valueOf(model.getPriority()));
         holder.webViewUrl.setText(model.getWebUrl());
         holder.imageViewUrl.setText(model.getImageUrl());
 
@@ -73,7 +72,6 @@ public class KPC_NotificationAdapter extends FirestoreRecyclerAdapter<KPC_Notify
 
         TextView textViewTitle;
         TextView textViewDescription;
-        TextView textViewPriority;
         TextView webViewUrl;
         TextView imageViewUrl;
         TextView actionButton;
@@ -85,7 +83,6 @@ public class KPC_NotificationAdapter extends FirestoreRecyclerAdapter<KPC_Notify
 
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
-            textViewPriority = itemView.findViewById(R.id.text_view_priority);
             webViewUrl = itemView.findViewById(R.id.notification_web_url);
             imageViewUrl = itemView.findViewById(R.id.notification_image_url);
             actionButton = itemView.findViewById(R.id.action_button);

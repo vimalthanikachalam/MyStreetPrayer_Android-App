@@ -21,18 +21,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".DailyVerse_Activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PrayerRequests" />
+        <activity android:name=".UploadVideos" />
         <activity android:name=".CreateNotificationActivity" />
-        <activity android:name=".NotificationActivity">
+        <activity
+            android:name=".NotificationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="NOTIFICATION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".VideosActivity" />
+        <activity
+            android:name=".VideosActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Testimonial" />
-        <activity android:name=".PrayerRequest">
+        <activity android:name=".PrayerPoints">
             <intent-filter>
                 <action android:name="PRAYER" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -41,6 +53,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="BOOKS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -66,9 +79,12 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver> <!-- End of Injected Alarm Services -->
-        <activity android:name=".PrayerSongs_Activity">
+        <activity
+            android:name=".PrayerSongs_Activity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="PRAYERSONGS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

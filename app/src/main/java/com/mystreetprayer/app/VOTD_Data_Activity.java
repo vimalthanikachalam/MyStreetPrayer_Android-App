@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,22 +16,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class VOTD_Data extends AsyncTask<Void, Void, Void> {
+public class VOTD_Data_Activity extends AsyncTask<Void, Void, Void> {
 
     private String verseData = "";
-    private String dailyverse = "";
-    private String verseauthor = "";
     private String dailVersePref = "";
     private String verseAuthorPref = "";
+    String dailyverse = "";
+    String verseauthor = "";
     private SharedPreferences sharedPreferences;
 
-    private Context context;
 
-    public VOTD_Data(Context context){
+    VOTD_Data_Activity(Context context){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         dailVersePref = sharedPreferences.getString("dailyverse", "");
         verseAuthorPref = sharedPreferences.getString("verseauthor", "");
     }
+
 
 
     @Override
@@ -55,8 +56,8 @@ public class VOTD_Data extends AsyncTask<Void, Void, Void> {
             JSONObject mainObject = new JSONObject(verseData).getJSONObject("verse");
             JSONObject verseObject = mainObject.getJSONObject("details");
 
-            dailyverse = verseObject.getString("text");
-            verseauthor = verseObject.getString("reference");
+             dailyverse = verseObject.getString("text");
+             verseauthor = verseObject.getString("reference");
 
             sharedPreferences
                     .edit()
@@ -76,8 +77,8 @@ public class VOTD_Data extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        Fragment_Home.dailyVerse.setText(dailVersePref);
-        Fragment_Home.verseAuthor.setText(verseAuthorPref);
+        DailyVerse_Activity.dailyVerse.setText(dailyverse.toString());
+        DailyVerse_Activity.verseAuthor.setText(verseauthor.toString());
 
     }
 }

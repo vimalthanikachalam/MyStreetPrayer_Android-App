@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:scrollbarStyle="outsideOverlay">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="10dp"
             android:text="@string/time"
-            tools:text="Set Your Time"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:text="Set Your Time" />
 
         <View
             android:layout_width="match_parent"
@@ -43,12 +42,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="10dp"
             android:text="@string/label"
-            tools:text="Label"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:visibility="gone"
-            />
+            tools:text="Label" />
 
         <View
             android:layout_width="match_parent"
@@ -60,21 +58,22 @@
             android:id="@+id/edit_alarm_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:autofillHints=""
+            android:hint="@string/add_label_hint"
             android:inputType="textCapWords"
             android:maxLength="15"
-            android:text="Prayer Time"
+            android:text="@string/prayer_time"
             android:textColor="@color/secondary_text"
-            android:visibility="gone"
-            android:hint="@string/add_label_hint"
-            android:layout_marginBottom="@dimen/activity_vertical_margin" />
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="10dp"
             android:text="@string/days"
-            tools:text="Select Days"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:text="Select Days" />
 
         <View
             android:layout_width="match_parent"
@@ -85,123 +84,113 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:columnCount="7"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/spacing_large"
-            >
+            android:columnCount="7">
 
 
             <CheckBox
                 android:id="@+id/edit_alarm_mon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:layout_gravity="center_horizontal"
-                android:button="@drawable/monday_checkbox"
                 android:layout_margin="4dp"
                 android:layout_marginLeft="32dp"
-                android:focusable="true"
-                android:clickable="true"
+                android:button="@drawable/monday_checkbox"
                 android:checked="true"
+                android:clickable="true"
+                android:focusable="true"
                 android:scaleX="1.5"
                 android:scaleY="1.5"
-                />
-
-
+                app:layout_gravity="center_horizontal" />
 
             <CheckBox
                 android:id="@+id/edit_alarm_tues"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:layout_gravity="center_horizontal"
-                android:button="@drawable/tuesday_checkbox"
                 android:layout_margin="4dp"
-                android:checked="true"
                 android:layout_marginLeft="12dp"
-                android:focusable="true"
+                android:button="@drawable/tuesday_checkbox"
+                android:checked="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:scaleX="1.5"
                 android:scaleY="1.5"
-                />
-
+                app:layout_gravity="center_horizontal" />
 
 
             <CheckBox
                 android:id="@+id/edit_alarm_wed"
                 android:layout_width="30dp"
-                android:checked="true"
                 android:layout_height="30dp"
-                app:layout_gravity="center_horizontal"
-                android:button="@drawable/wednesday_checkbox"
                 android:layout_margin="4dp"
                 android:layout_marginLeft="12dp"
-                android:focusable="true"
+                android:button="@drawable/wednesday_checkbox"
+                android:checked="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:scaleX="1.5"
-                android:scaleY="1.5"/>
+                android:scaleY="1.5"
+                app:layout_gravity="center_horizontal" />
 
 
             <CheckBox
                 android:id="@+id/edit_alarm_thurs"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:layout_gravity="center_horizontal"
-                android:button="@drawable/thursday_checkbox"
                 android:layout_margin="4dp"
-                android:checked="true"
                 android:layout_marginLeft="12dp"
-                android:focusable="true"
+                android:button="@drawable/thursday_checkbox"
+                android:checked="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:scaleX="1.5"
                 android:scaleY="1.5"
-                />
+                app:layout_gravity="center_horizontal" />
 
 
             <CheckBox
                 android:id="@+id/edit_alarm_fri"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:checked="true"
-                app:layout_gravity="center_horizontal"
-                android:button="@drawable/friday_checkbox"
                 android:layout_margin="4dp"
                 android:layout_marginLeft="12dp"
-                android:focusable="true"
+                android:button="@drawable/friday_checkbox"
+                android:checked="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:scaleX="1.5"
-                android:scaleY="1.5"/>
+                android:scaleY="1.5"
+                app:layout_gravity="center_horizontal" />
 
 
             <CheckBox
                 android:id="@+id/edit_alarm_sat"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:layout_gravity="center_horizontal"
-                android:button="@drawable/saturday_checkbox"
                 android:layout_margin="4dp"
                 android:layout_marginLeft="12dp"
+                android:button="@drawable/saturday_checkbox"
                 android:checked="true"
-                android:focusable="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:scaleX="1.5"
                 android:scaleY="1.5"
-                />
+                app:layout_gravity="center_horizontal" />
 
 
             <CheckBox
                 android:id="@+id/edit_alarm_sun"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:layout_gravity="center_horizontal"
-                android:button="@drawable/sunday_checkbox"
                 android:layout_margin="4dp"
-                android:checked="true"
                 android:layout_marginLeft="12dp"
-                android:focusable="true"
+                android:button="@drawable/sunday_checkbox"
+                android:checked="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:scaleX="1.5"
                 android:scaleY="1.5"
-                />
-
+                app:layout_gravity="center_horizontal" />
 
         </GridLayout>
 
@@ -210,13 +199,13 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:background="@drawable/ripple_effect"
+            android:backgroundTint="@color/green_600"
+            android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:backgroundTint="@color/green_600"
-            android:text="Save"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:background="@drawable/ripple_effect"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 

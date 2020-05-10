@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DailyVerse_Activity">
+
+    <ImageView
+        android:id="@+id/dailyVerse_Image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000"
+        android:alpha=".3"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/dailverse_Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+         />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/dailverse_Toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="24dp"
+            android:paddingTop="54dp"
+            >
+
+            <TextView
+                android:id="@+id/verse_View"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bebus_bold"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/fetching_data"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/author_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/verse_font"
+        android:text="@string/verse"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:layout_gravity="end"
+        android:layout_margin="24dp"
+        />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+    <Button
+        android:id="@+id/share_verse"
+        style="@style/Button.Primary.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share_the_verse"
+        android:layout_margin="24dp"
+        android:layout_gravity="right"
+        />
+
+    </LinearLayout>
+
+</RelativeLayout>

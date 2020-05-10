@@ -11,12 +11,14 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:alpha="0.3"
+        android:layout_gravity="center"
         app:srcCompat="@drawable/logo"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/todo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,13 +49,14 @@
 
     <Button
         android:id="@+id/cancelSound"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="Cancle Sound"
+        android:layout_marginTop="10dp"
+        android:text="@string/cancle_sound"
         android:layout_gravity="center"
+        android:background="@drawable/ripple_effect"
         android:gravity="center"
         android:onClick="stopSound"
-        android:layout_marginBottom="200dp"/>
+        android:layout_marginBottom="80dp"/>
 
 </LinearLayout>

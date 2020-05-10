@@ -6,5 +6,6 @@
     android:name="com.mystreetprayer.app.alarmclock.ui.AlarmLandingPageFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout="@layout/alarm_fragment_landing_page" />
+    tools:layout="@layout/alarm_fragment_landing_page"
+    />
 

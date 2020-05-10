@@ -19,11 +19,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class Fragment_Bible extends Fragment {
 
     private WebView webView_bible;
     private ProgressBar progressBarBible;
+
 
     @Nullable
     @Override
@@ -48,8 +55,10 @@ public class Fragment_Bible extends Fragment {
     }
 
     private void bibleWebView() {
-        webView_bible.loadUrl("https://www.kingjamesbibleonline.org/");
-        progressBarBible.setMax(50);
+
+        webView_bible.loadUrl("https://mystreetprayer-d7aa2.firebaseapp.com/");
+//      webView_bible.loadUrl("https://www.kingjamesbibleonline.org/");
+        progressBarBible.setMax(100);
 
         WebSettings webSettings= webView_bible.getSettings();
 
@@ -91,9 +100,11 @@ public class Fragment_Bible extends Fragment {
 
 
 
+
     @Override
     public void onResume() {
         super.onResume();
         getActivity().setTitle("Bible");
     }
+
 }

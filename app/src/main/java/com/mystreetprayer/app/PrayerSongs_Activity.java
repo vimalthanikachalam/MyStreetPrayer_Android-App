@@ -3,6 +3,7 @@ package com.mystreetprayer.app;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +33,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -49,13 +53,13 @@ import java.util.Objects;
 public class PrayerSongs_Activity extends AppCompatActivity {
 
 
-
-
     private boolean checkPermission = false;
     Uri uri;
     String songName, songUrl;
     ListView listView;
     DatabaseReference databaseReference;
+
+    private ProgressBar songsProgress;
 
     ArrayList<String> arrayListSongsName = new ArrayList<>();
     ArrayList<String> arrayListSongsUrl = new ArrayList<>();
@@ -71,7 +75,9 @@ public class PrayerSongs_Activity extends AppCompatActivity {
         listView = findViewById(R.id.songListView);
         jcPlayerView = findViewById(R.id.jcplayer);
 
-        retriveSongs();
+        songsProgress = (ProgressBar) findViewById(R.id.prayerSongs_progress);
+
+        retrieveSongs();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -81,39 +87,47 @@ public class PrayerSongs_Activity extends AppCompatActivity {
             }
         });
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.prayer_songs_Toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Prayer Songs");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
 
     }
 
 
-
-    private void retriveSongs() {
-
+    private void retrieveSongs() {
         databaseReference = FirebaseDatabase.getInstance().getReference("PrayerSongs");
+
+        // Filter the Content
+        // Query query = databaseReference.orderByChild("from").equalTo("this");
+        // query.keepSynced(true);
+
         databaseReference.keepSynced(true); //Check for Database updates in offline mode
+
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                songsProgress.setVisibility(View.GONE);
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-
                     SongsUtility songObj = ds.getValue(SongsUtility.class);
+                    assert songObj != null;
                     arrayListSongsName.add(songObj.getSongName());
                     arrayListSongsUrl.add(songObj.getSongUrl());
                     jcAudios.add(JcAudio.createFromURL(songObj.getSongName(), songObj.getSongUrl()));
 
                 }
-                arrayAdapter = new ArrayAdapter<String>(PrayerSongs_Activity.this, android.R.layout.simple_expandable_list_item_1, arrayListSongsName){
+                arrayAdapter = new ArrayAdapter<String>(PrayerSongs_Activity.this, R.layout.song_list, R.id.song_text_view, arrayListSongsName){
                     @NonNull
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
                         View view = super.getView(position, convertView, parent);
-                        TextView textView = (TextView) view.findViewById(android.R.id.text1);
+                        TextView textView = (TextView) view.findViewById(R.id.song_text_view);
                         textView.setSingleLine(true);
-                        textView.setTextSize(18);
+//                        textView.setTextSize(18);
                         textView.setMaxLines(1);
 
                         return view;
@@ -269,4 +283,6 @@ public class PrayerSongs_Activity extends AppCompatActivity {
 
         return checkPermission;
     }
+
+
 }

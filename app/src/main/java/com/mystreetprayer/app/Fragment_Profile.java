@@ -31,8 +31,9 @@ import java.util.Objects;
 public class Fragment_Profile extends Fragment {
 
     private SharedPreferences sharedPreferences;
-    private LinearLayout visitWebsite;
-    private LinearLayout prayerTimeProfile;
+    private LinearLayout visitWebsite, prayerTimeProfile;
+    private String feedbackUrl = "https://play.google.com/store/apps/details?id=com.mystreetprayer.app";
+
 
     @Nullable
     @Override
@@ -42,6 +43,8 @@ public class Fragment_Profile extends Fragment {
 
         visitWebsite = (LinearLayout) rootView.findViewById(R.id.visitWebsite);
         prayerTimeProfile = (LinearLayout) rootView.findViewById(R.id.profile_Prayer_Time);
+
+
         LinearLayout whatsApp = (LinearLayout) rootView.findViewById(R.id.profile_whatsapp);
         Button logOutbtn = (Button) rootView.findViewById(R.id.logout);
 
@@ -59,6 +62,7 @@ public class Fragment_Profile extends Fragment {
 
 
 
+        //Contact us on WhatsApp
         whatsApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,12 +70,41 @@ public class Fragment_Profile extends Fragment {
             }
         });
 
+        //Logout Method
         logOutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 Toast.makeText(getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //App Feedback
+        LinearLayout feedback = (LinearLayout) rootView.findViewById(R.id.feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent feedbackIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(feedbackUrl));
+                startActivity(feedbackIntent);
+            }
+        });
+
+        //Share the App
+        LinearLayout sharetheApp = (LinearLayout) rootView.findViewById(R.id.share_app);
+        sharetheApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_TEXT, "Karnataka Prayer Call 24/7 APP.\n"
+                        +"\n"
+                        + "Be the first to receive updates from KPC APP. \n"
+                        + "\n"
+                        + "Download the App Now!  \n"
+                        + "https://play.google.com/store/apps/details?id="
+                        + BuildConfig.APPLICATION_ID);
+                startActivity(Intent.createChooser(share, "Share"));
             }
         });
 

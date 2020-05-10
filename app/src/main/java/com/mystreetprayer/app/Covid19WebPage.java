@@ -1,8 +1,10 @@
 package com.mystreetprayer.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebChromeClient;
@@ -13,12 +15,26 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import com.example.jean.jcplayer.model.JcAudio;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Objects;
 
 public class Covid19WebPage extends AppCompatActivity {
 
     private WebView webView_covid;
     private ProgressBar progressbarCovid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +69,8 @@ public class Covid19WebPage extends AppCompatActivity {
 
     private void covidWebView() {
 
-        //webView_covid.loadUrl("https://www.covid19india.org/");
-
-        webView_covid.loadUrl("https://worshipsongs-3e1e3.web.app/");
-
-
-
-        progressbarCovid.setMax(50);
+        webView_covid.loadUrl("https://www.covid19india.org/");
+        progressbarCovid.setMax(100);
         WebSettings webSettings= webView_covid.getSettings();
         webView_covid.getSettings().setDomStorageEnabled(true);
         webView_covid.getSettings().setAppCacheEnabled(true);
@@ -83,6 +94,7 @@ public class Covid19WebPage extends AppCompatActivity {
         });
 
     }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:scrollbars="none"
     android:scrollingCache="true">
 
@@ -29,7 +30,7 @@
                     android:id="@+id/username_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="User Name"
+                    android:hint="@string/user_name_profile"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                     android:textColor="@color/grey_80"
                     android:textStyle="bold" />
@@ -37,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Be Blessed!"
+                    android:text="@string/be_blessed"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/grey_80" />
 
@@ -46,6 +47,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:contentDescription="@string/todo"
                 android:src="@drawable/ic_profile" />
 
         </LinearLayout>
@@ -60,6 +62,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:minHeight="70dp"
             android:orientation="horizontal"
@@ -71,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="Your Prayer Time"
+                android:text="@string/your_prayer_time_profile"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/grey_80" />
 
@@ -82,11 +85,12 @@
             <ImageButton
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginRight="6dp"
-                android:background="@android:color/transparent"
-                android:tint="@color/grey_60"
+                android:layout_marginEnd="6dp"
                 android:alpha=".5"
-                android:src="@drawable/ic_clock_prayer_24dp"/>
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_clock_prayer_24dp"
+                android:tint="@color/grey_60" />
 
         </LinearLayout>
 
@@ -103,6 +107,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:minHeight="70dp"
             android:orientation="horizontal"
@@ -114,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="Contact Us on WhatsApp"
+                android:text="@string/contact_us_on_whatsapp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/grey_80" />
 
@@ -125,8 +130,51 @@
             <ImageButton
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginRight="6dp"
-                android:background="@drawable/ic_whatsapp" />
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/ic_whatsapp"
+                android:contentDescription="@string/todo" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:background="@color/grey_10" />
+
+        <LinearLayout
+            android:id="@+id/offering"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="70dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/spacing_large"
+            android:paddingRight="@dimen/spacing_large">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/offering"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/grey_80" />
+
+            <View
+                android:layout_width="@dimen/spacing_large"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/ic_offering"
+                android:contentDescription="@string/todo" />
 
         </LinearLayout>
 
@@ -143,6 +191,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:minHeight="70dp"
             android:orientation="horizontal"
@@ -154,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="Visit our Website"
+                android:text="@string/visit_our_website"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/grey_80" />
 
@@ -165,9 +214,10 @@
             <ImageButton
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginRight="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/ic_website"
                 android:backgroundTint="@color/blue_A700"
-                android:background="@drawable/ic_website" />
+                android:contentDescription="@string/todo" />
 
         </LinearLayout>
 
@@ -183,6 +233,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:minHeight="70dp"
             android:orientation="horizontal"
@@ -194,7 +245,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="About Us"
+                android:text="@string/about_us"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/grey_80" />
 
@@ -206,6 +257,7 @@
                 android:layout_width="@dimen/spacing_xmlarge"
                 android:layout_height="@dimen/spacing_xmlarge"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/todo"
                 android:tint="@color/grey_60"
                 app:srcCompat="@drawable/ic_info_outline_black_24dp" />
 
@@ -219,10 +271,12 @@
             android:background="@color/grey_10" />
 
         <LinearLayout
+            android:id="@+id/share_app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:minHeight="70dp"
             android:orientation="horizontal"
@@ -234,7 +288,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="Share the App"
+                android:text="@string/share_the_app"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/grey_80" />
 
@@ -246,6 +300,7 @@
                 android:layout_width="@dimen/spacing_xmlarge"
                 android:layout_height="@dimen/spacing_xmlarge"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/todo"
                 android:tint="@color/grey_60"
                 app:srcCompat="@drawable/ic_share_black_24dp" />
 
@@ -259,10 +314,12 @@
             android:background="@color/grey_10" />
 
         <LinearLayout
+            android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:minHeight="70dp"
             android:orientation="horizontal"
@@ -274,18 +331,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
-                android:text="Give us feedback on the App"
+                android:text="@string/give_us_feedback_on_the_app"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/grey_80" />
 
             <View
                 android:layout_width="@dimen/spacing_large"
                 android:layout_height="wrap_content" />
-
-<!--            <ImageButton-->
-<!--                android:layout_width="@dimen/spacing_xmlarge"-->
-<!--                android:layout_height="@dimen/spacing_xmlarge"-->
-<!--                />-->
 
         </LinearLayout>
 
@@ -301,13 +353,12 @@
             android:id="@+id/logout"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:background="@drawable/ripple_effect"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            />
+            android:background="@drawable/ripple_effect"
+            android:text="@string/log_out"
+            android:textAllCaps="false"
+            android:textColor="#fff" />
 
         <View
             android:layout_width="0dp"

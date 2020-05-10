@@ -11,13 +11,10 @@
         android:layout_height="match_parent"
         tools:context="com.mystreetprayer.app.Covid19WebPage">
 
-
         <WebView
             android:id="@+id/covid19web"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-        </WebView>
+            android:layout_height="match_parent" />
 
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -35,6 +32,5 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
 
 </RelativeLayout>

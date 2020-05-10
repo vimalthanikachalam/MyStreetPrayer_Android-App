@@ -12,6 +12,7 @@ import android.graphics.Color;
 
 import androidx.core.app.NotificationCompat;
 
+import com.mystreetprayer.app.DailyVerse_Activity;
 import com.mystreetprayer.app.MainActivity;
 import com.mystreetprayer.app.R;
 
@@ -31,7 +32,7 @@ public class NotificationHelper {
         Bitmap bigImage = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.verse_img_2);
         Bitmap thumbnail = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.ic_launcher);
 
-        Intent intent = new Intent(mContext , MainActivity.class);
+        Intent intent = new Intent(mContext , DailyVerse_Activity.class);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

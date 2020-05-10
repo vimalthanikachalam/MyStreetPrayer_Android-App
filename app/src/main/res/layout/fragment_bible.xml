@@ -2,31 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/bible_sr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.mystreetprayer.app.PrayerRequest">
+        tools:context="com.mystreetprayer.app.PrayerPoints">
 
 
         <WebView
             android:id="@+id/kjvwebview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
         </WebView>
 
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <LinearLayout
-        android:layout_gravity="top"
-        android:background="@color/white"
-        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="6dp">
+        android:layout_height="6dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="top"
+        android:background="@color/white">
 
         <ProgressBar
             android:id="@+id/kjvProgressBar"

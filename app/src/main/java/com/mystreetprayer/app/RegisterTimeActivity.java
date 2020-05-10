@@ -133,6 +133,7 @@ public class RegisterTimeActivity extends AppCompatActivity implements  AdapterV
 
                     Intent Alramintent = new Intent(RegisterTimeActivity.this, AlarmMainActivity.class);
                     startActivity(Alramintent);
+                    finish();
 
 //                    databaseReference.push().setValue(prayerTimeData).addOnSuccessListener(new OnSuccessListener<Void>() {
 //                        @Override

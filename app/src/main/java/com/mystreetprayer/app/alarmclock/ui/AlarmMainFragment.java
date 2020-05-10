@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -46,7 +45,7 @@ public final class AlarmMainFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        final View v = inflater.inflate(R.layout.alarm_fragment_main, container, false);
+        final View v = inflater.inflate(R.layout.alarm_fragment, container, false);
 
         final EmptyRecyclerView rv = v.findViewById(R.id.recycler);
         mAdapter = new AlarmsAdapter();

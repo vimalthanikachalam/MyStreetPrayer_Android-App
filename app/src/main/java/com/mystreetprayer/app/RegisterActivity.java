@@ -133,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             });
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            finish();
 
                         }else {
                             Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
