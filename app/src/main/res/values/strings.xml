@@ -124,12 +124,12 @@
     <string name="register_prayer_time_home">Register Prayer Time</string>
     <string name="know_the_truth_title">Know the truth</string>
     <string name="worship_songs_title">Worship Songs</string>
-    <string name="videos_title">Videos</string>
+    <string name="videos_title">Sermons</string>
     <string name="prayer_points">Prayer Points</string>
     <string name="prayer_request_title">Prayer Request</string>
     <string name="covid_19_stats">Covid-19 Stats</string>
     <string name="testimonials_title">Testimonials</string>
-    <string name="user_name_profile">User Name</string>
+    <string name="user_name_profile">Fetching data!</string>
     <string name="be_blessed">Be Blessed!</string>
     <string name="your_prayer_time_profile">Your Prayer Time</string>
     <string name="contact_us_on_whatsapp">Contact Us on WhatsApp</string>
@@ -151,6 +151,14 @@
     <string name="tab_text_2">Tamil</string>
     <string name="tab_text_3">Hindi</string>
     <string name="title_activity_sermons">SermonsActivity</string>
+    <string name="developers">Developers</string>
+    <string name="kpc_team">KPC Team</string>
+    <string name="religious_organization">Religious organization in Bengaluru, Karnataka</string>
+    <string name="copyrighta">©2020, KPC 24/7 All rights Reserved!</string>
+    <string name="last_update">Last Update</string>
+    <string name="update_year">May 2020</string>
+    <string name="app_version">2.1.1</string>
+    <string name="version_app">Version</string>
     <!--End of Alarm Strings-->
 
 </resources>

@@ -51,7 +51,7 @@ public class NotificationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 
         FloatingActionButton floatingActionButton = findViewById(R.id.create_new_notify);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

@@ -31,7 +31,7 @@ import java.util.Objects;
 public class Fragment_Profile extends Fragment {
 
     private SharedPreferences sharedPreferences;
-    private LinearLayout visitWebsite, prayerTimeProfile;
+    private LinearLayout visitWebsite, prayerTimeProfile, aboutUs;
     private String feedbackUrl = "https://play.google.com/store/apps/details?id=com.mystreetprayer.app";
 
 
@@ -87,6 +87,16 @@ public class Fragment_Profile extends Fragment {
             public void onClick(View v) {
                 Intent feedbackIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(feedbackUrl));
                 startActivity(feedbackIntent);
+            }
+        });
+
+        //About Us inflater
+        aboutUs = (LinearLayout) rootView.findViewById(R.id.about_us_view);
+        aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent aboutUs = new Intent(requireActivity(), AboutUs.class);
+                startActivity(aboutUs);
             }
         });
 

@@ -47,7 +47,7 @@ public class VideosActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.create_new_video);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

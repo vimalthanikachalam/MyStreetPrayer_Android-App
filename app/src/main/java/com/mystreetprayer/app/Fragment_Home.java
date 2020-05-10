@@ -1,7 +1,9 @@
 package com.mystreetprayer.app;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.print.PageRange;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +17,24 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 
+import java.util.Objects;
 import java.util.Random;
+
+import jonathanfinerty.once.Once;
 
 public class Fragment_Home extends Fragment {
     public static TextView dailyVerse;
     public static TextView verseAuthor;
 
+    private View rootView;
 
+    String showWhatsNew = "showWhatsNewTag";
 
 
     private ImageView bannerImage;
@@ -53,9 +63,12 @@ public class Fragment_Home extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        rootView = inflater.inflate(R.layout.fragment_home, container, false);
         //Analytics
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(requireActivity());
+
+
 
         CardView prayerSong = (CardView) rootView.findViewById(R.id.prayer_songs);
         CardView registerPrayerTime = (CardView) rootView.findViewById(R.id.register_PrayerTime);
@@ -72,9 +85,12 @@ public class Fragment_Home extends Fragment {
 
         new VOTD_Data_Fragment(getActivity()).execute();
 
+        Once.initialise(requireActivity());
+
         //BindMethod
         randomImage();
 
+        runOnce();
 
         prayerSong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +168,75 @@ public class Fragment_Home extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void runOnce(){
+        if (!Once.beenDone(Once.THIS_APP_VERSION, showWhatsNew)) {
+            firstTargetSequence();
+            Once.markDone(showWhatsNew);
+        }
+    }
+
+    private void firstTargetSequence() {
+
+        TapTargetView.showFor(requireActivity(), TapTarget.forView(rootView.findViewById(R.id.prayer_songs),
+                "Worship Songs!", "Browse songs that are recorded in Faith Ministries Church, available in English,Kannada,Tamil & Hindi ").transparentTarget(true),
+                new TapTargetView.Listener(){
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);
+                        secondTarget();
+                    }
+                }
+        );
+
+    }
+
+    private void secondTarget() {
+        TapTargetView.showFor(requireActivity(), TapTarget.forView(rootView.findViewById(R.id.knowtheTruth),
+                "Books", "Study to use the Word of God Correctly!").transparentTarget(true),
+                new TapTargetView.Listener(){
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);
+                        thirdTarget();
+                    }
+                }
+        );
+    }
+
+    private void thirdTarget() {
+        TapTargetView.showFor(requireActivity(), TapTarget.forView(rootView.findViewById(R.id.videoViewCard),
+                "Sermons", "Live Videos and Audio updates for you!").transparentTarget(true),
+                new TapTargetView.Listener(){
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);
+                        fourthTarget();
+                    }
+                }
+        );
+
+    }
+
+    private void fourthTarget() {
+        TapTargetView.showFor(requireActivity(), TapTarget.forView(rootView.findViewById(R.id.daily_verse),
+                "Daily Verse", "Every Day, New Verse is updated for you!").transparentTarget(true),
+                new TapTargetView.Listener(){
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);
+                        fithTarget();
+                    }
+                }
+        );
+
+    }
+
+    private void fithTarget() {
+        TapTargetView.showFor(requireActivity(), TapTarget.forView(rootView.findViewById(R.id.register_PrayerTime),
+                "Register Your Prayer Time!", "One last thing, before we finish our Introduction. \n" +
+                        "Claim your community for Christ! Register now!.").transparentTarget(true));
     }
 
 

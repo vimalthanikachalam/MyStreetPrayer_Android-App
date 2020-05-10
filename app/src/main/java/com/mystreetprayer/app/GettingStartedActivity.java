@@ -11,10 +11,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class GettingStartedActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_getting_started);
+
+
 
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         Button registerView = (Button) findViewById(R.id.gs_New_User);
