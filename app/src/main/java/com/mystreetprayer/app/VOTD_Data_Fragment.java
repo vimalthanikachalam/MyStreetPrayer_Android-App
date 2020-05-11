@@ -73,10 +73,9 @@ public class VOTD_Data_Fragment extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
         //Home Banner
         Fragment_Home.dailyVerse.setText(dailVersePref);
         Fragment_Home.verseAuthor.setText(verseAuthorPref);
-
     }
+
 }

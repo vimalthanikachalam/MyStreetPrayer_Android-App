@@ -31,7 +31,9 @@ import java.util.Objects;
 public class Fragment_Profile extends Fragment {
 
     private SharedPreferences sharedPreferences;
-    private LinearLayout visitWebsite, prayerTimeProfile, aboutUs;
+    private TextView userNameProfile;
+    private LinearLayout visitWebsite;
+    private LinearLayout prayerTimeProfile;
     private String feedbackUrl = "https://play.google.com/store/apps/details?id=com.mystreetprayer.app";
 
 
@@ -39,27 +41,18 @@ public class Fragment_Profile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        TextView userNameProfile = (TextView) rootView.findViewById(R.id.username_profile);
+        userNameProfile = (TextView) rootView.findViewById(R.id.username_profile);
 
         visitWebsite = (LinearLayout) rootView.findViewById(R.id.visitWebsite);
         prayerTimeProfile = (LinearLayout) rootView.findViewById(R.id.profile_Prayer_Time);
 
-
         LinearLayout whatsApp = (LinearLayout) rootView.findViewById(R.id.profile_whatsapp);
         Button logOutbtn = (Button) rootView.findViewById(R.id.logout);
-
-
-        //Save UserData in Local
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String getUSerName = sharedPreferences.getString("username", "");
-
-        userNameProfile.setText(getUSerName);
 
         //MethodCalls
         firestoreData();
         visitOurWebsite();
         prayerTime();
-
 
 
         //Contact us on WhatsApp
@@ -91,7 +84,7 @@ public class Fragment_Profile extends Fragment {
         });
 
         //About Us inflater
-        aboutUs = (LinearLayout) rootView.findViewById(R.id.about_us_view);
+        LinearLayout aboutUs = (LinearLayout) rootView.findViewById(R.id.about_us_view);
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +108,16 @@ public class Fragment_Profile extends Fragment {
                         + "https://play.google.com/store/apps/details?id="
                         + BuildConfig.APPLICATION_ID);
                 startActivity(Intent.createChooser(share, "Share"));
+            }
+        });
+
+        //Offering
+        LinearLayout offering = (LinearLayout) rootView.findViewById(R.id.offering);
+        offering.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent offerIntent = new Intent(getActivity(), OfferingActivity.class);
+                startActivity(offerIntent);
             }
         });
 
@@ -179,9 +182,15 @@ public class Fragment_Profile extends Fragment {
         });
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
+        //Save UserData in Local
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String getUSerName = sharedPreferences.getString("username", "");
+        userNameProfile.setText(getUSerName);
+
         requireActivity().setTitle("Profile");
     }
 }

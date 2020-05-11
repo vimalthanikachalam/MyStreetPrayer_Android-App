@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseMessaging.getInstance().subscribeToTopic("FMC");
 
+
         //Methods Call
         dailyVerseNotification();
 

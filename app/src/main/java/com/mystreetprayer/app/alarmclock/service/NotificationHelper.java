@@ -30,7 +30,7 @@ public class NotificationHelper {
     {
 
         Bitmap bigImage = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.verse_img_2);
-        Bitmap thumbnail = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.ic_launcher);
+        Bitmap thumbnail = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.ic_launcher_round);
 
         Intent intent = new Intent(mContext , DailyVerse_Activity.class);
 

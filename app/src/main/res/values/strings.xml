@@ -159,6 +159,7 @@
     <string name="update_year">May 2020</string>
     <string name="app_version">2.1.1</string>
     <string name="version_app">Version</string>
+    <string name="any_questions">Any Questions, Please Contact Us.</string>
     <!--End of Alarm Strings-->
 
 </resources>

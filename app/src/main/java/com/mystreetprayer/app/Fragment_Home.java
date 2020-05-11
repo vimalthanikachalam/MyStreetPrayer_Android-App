@@ -1,7 +1,11 @@
 package com.mystreetprayer.app;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.print.PageRange;
@@ -16,6 +20,7 @@ import androidx.annotation.Nullable;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
@@ -69,7 +74,6 @@ public class Fragment_Home extends Fragment {
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(requireActivity());
 
 
-
         CardView prayerSong = (CardView) rootView.findViewById(R.id.prayer_songs);
         CardView registerPrayerTime = (CardView) rootView.findViewById(R.id.register_PrayerTime);
         CardView knowthetruth = (CardView) rootView.findViewById(R.id.knowtheTruth);
@@ -79,13 +83,14 @@ public class Fragment_Home extends Fragment {
         CardView videoPage = (CardView) rootView.findViewById(R.id.videoViewCard);
         CardView prayerRequest = (CardView) rootView.findViewById(R.id.prayerRequestView);
 
-        dailyVerse = (TextView) rootView.findViewById(R.id.daily_verse);
-        verseAuthor = (TextView) rootView.findViewById(R.id.verse_author);
+
         bannerImage = (ImageView) rootView.findViewById(R.id.image_view);
 
         new VOTD_Data_Fragment(getActivity()).execute();
 
         Once.initialise(requireActivity());
+
+
 
         //BindMethod
         randomImage();
@@ -177,6 +182,7 @@ public class Fragment_Home extends Fragment {
         }
     }
 
+
     private void firstTargetSequence() {
 
         TapTargetView.showFor(requireActivity(), TapTarget.forView(rootView.findViewById(R.id.prayer_songs),
@@ -244,6 +250,9 @@ public class Fragment_Home extends Fragment {
     public void onResume() {
         super.onResume();
         requireActivity().setTitle("Home");
+        dailyVerse = (TextView) rootView.findViewById(R.id.daily_verse);
+        verseAuthor = (TextView) rootView.findViewById(R.id.verse_author);
+
     }
 
     //Daily Verse Random Images Pick from Local

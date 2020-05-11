@@ -21,8 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutUs"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".OfferingActivity"></activity>
+        <activity
+            android:name=".AboutUs"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GettingStartedActivity"
             android:theme="@style/AppTheme.NoActionBar">

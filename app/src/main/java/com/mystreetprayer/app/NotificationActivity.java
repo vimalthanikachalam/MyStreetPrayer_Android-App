@@ -113,12 +113,11 @@ public class NotificationActivity extends AppCompatActivity {
                 KPC_Notify_Firestore nofificationList = documentSnapshot.toObject(KPC_Notify_Firestore.class);
 //                String id = documentSnapshot.getId();
                 String url = documentSnapshot.getString("webUrl");
-                String https = "https://"+url;
 
                 //Launch the Action to External Browser
-                Intent webLink = new Intent(Intent.ACTION_VIEW, Uri.parse(https));
+                Intent webLink = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(webLink);
-                Toast.makeText(NotificationActivity.this, "Opening : " + https, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationActivity.this, "Opening : " + url, Toast.LENGTH_SHORT).show();
             }
         });
 
