@@ -1,6 +1,5 @@
 package com.mystreetprayer.app;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -12,8 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -22,10 +19,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 
-
 public class MainActivity extends AppCompatActivity {
-
-
 
 
     @Override
@@ -103,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.bottom_profile:
                             selectedFragment = new Fragment_Profile();
                             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-                            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_profile_fill);
+                            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_more_horiz_black_24dp);
                             break;
                     }
 

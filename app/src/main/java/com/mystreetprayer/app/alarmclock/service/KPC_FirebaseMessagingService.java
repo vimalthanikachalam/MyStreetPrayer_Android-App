@@ -19,7 +19,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.mystreetprayer.app.KnowTheTruth;
 import com.mystreetprayer.app.NotificationActivity;
 import com.mystreetprayer.app.PrayerPoints;
-import com.mystreetprayer.app.PrayerSongs_Activity;
+import com.mystreetprayer.app.PrayerSongWeb;
 import com.mystreetprayer.app.R;
 import com.mystreetprayer.app.RegisterTimeActivity;
 
@@ -84,7 +84,7 @@ public class KPC_FirebaseMessagingService extends FirebaseMessagingService {
         Intent notificationIntent;
 
         if(click_action.equals("PRAYERSONGS")){
-            notificationIntent = new Intent(this, PrayerSongs_Activity.class);
+            notificationIntent = new Intent(this, PrayerSongWeb.class);
             notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 

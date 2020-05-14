@@ -3,15 +3,15 @@
 
     <item android:id="@+id/bottom_home"
         android:icon="@drawable/ic_home"
-        android:title="Home"/>
+        android:title="@string/home_bottom_nav"/>
     <item android:id="@+id/bottom_bible"
         android:icon="@drawable/ic_bible"
-        android:title="Bible"/>
+        android:title="@string/bible_bottom_nav"/>
     <item android:id="@+id/bottom_ignite"
         android:icon="@drawable/ic_ignite"
-        android:title="Ignite"/>
+        android:title="@string/ignite_bottom_nav"/>
     <item android:id="@+id/bottom_profile"
-        android:icon="@drawable/ic_profile_24dp"
-        android:title="Profile"/>
+        android:icon="@drawable/ic_more_horiz_black_24dp"
+        android:title="@string/more_bottom_nav"/>
 
 </menu>

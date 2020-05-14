@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OfferingActivity"></activity>
+        <activity android:name=".PrayerSongWeb" />
+        <activity android:name=".OfferingActivity" />
         <activity
             android:name=".AboutUs"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -100,15 +101,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver> <!-- End of Injected Alarm Services -->
-        <activity
-            android:name=".PrayerSongs_Activity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="PRAYERSONGS" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".RegisterTimeActivity" />
         <activity
             android:name=".LoginActivity"

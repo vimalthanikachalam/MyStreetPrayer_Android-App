@@ -160,6 +160,10 @@
     <string name="app_version">2.1.1</string>
     <string name="version_app">Version</string>
     <string name="any_questions">Any Questions, Please Contact Us.</string>
+    <string name="home_bottom_nav">Home</string>
+    <string name="bible_bottom_nav">Bible</string>
+    <string name="ignite_bottom_nav">Ignite</string>
+    <string name="more_bottom_nav">More</string>
     <!--End of Alarm Strings-->
 
 </resources>

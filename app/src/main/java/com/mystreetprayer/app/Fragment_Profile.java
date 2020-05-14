@@ -167,6 +167,7 @@ public class Fragment_Profile extends Fragment {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userID = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
         firestore.collection("users").document(userID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
@@ -191,6 +192,6 @@ public class Fragment_Profile extends Fragment {
         String getUSerName = sharedPreferences.getString("username", "");
         userNameProfile.setText(getUSerName);
 
-        requireActivity().setTitle("Profile");
+        requireActivity().setTitle("More");
     }
 }

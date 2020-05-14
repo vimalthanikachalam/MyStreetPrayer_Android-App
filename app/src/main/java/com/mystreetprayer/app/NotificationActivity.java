@@ -54,6 +54,8 @@ public class NotificationActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 
         FloatingActionButton floatingActionButton = findViewById(R.id.create_new_notify);
+        //Enable only for admin
+        floatingActionButton.setVisibility(View.GONE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,17 +97,19 @@ public class NotificationActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(notificationAdapter);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
 
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                notificationAdapter.deleteItem(viewHolder.getAdapterPosition());
-            }
-        }).attachToRecyclerView(recyclerView);
+        //Remove Notification
+//        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//            @Override
+//            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+//                notificationAdapter.deleteItem(viewHolder.getAdapterPosition());
+//            }
+//        }).attachToRecyclerView(recyclerView);
 
         notificationAdapter.setOnItemClickListner(new KPC_NotificationAdapter.OnItemClickListerner() {
             @Override

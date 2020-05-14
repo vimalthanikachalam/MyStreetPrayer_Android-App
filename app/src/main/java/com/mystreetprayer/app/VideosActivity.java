@@ -50,6 +50,8 @@ public class VideosActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.create_new_video);
+        //Enable only for Admin
+        floatingActionButton.setVisibility(View.GONE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

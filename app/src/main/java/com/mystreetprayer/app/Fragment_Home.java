@@ -100,7 +100,7 @@ public class Fragment_Home extends Fragment {
         prayerSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent prayerIntent = new Intent(getActivity(), PrayerSongs_Activity.class);
+                Intent prayerIntent = new Intent(getActivity(), PrayerSongWeb.class);
                 startActivity(prayerIntent);
             }
         });

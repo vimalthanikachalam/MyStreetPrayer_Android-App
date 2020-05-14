@@ -15,19 +15,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.example.jean.jcplayer.model.JcAudio;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Objects;
 
 public class Covid19WebPage extends AppCompatActivity {
@@ -63,13 +50,18 @@ public class Covid19WebPage extends AppCompatActivity {
     //Back
     @Override
     public boolean onSupportNavigateUp() {
-        onBackPressed();
+//        onBackPressed();
+        if(webView_covid.canGoBack())
+            webView_covid.goBack();
+        else
+            super.onBackPressed();
         return true;
     }
 
     private void covidWebView() {
 
         webView_covid.loadUrl("https://www.covid19india.org/");
+        //webView_covid.loadUrl("https://worshipsongs-fmc.web.app/");
         progressbarCovid.setMax(100);
         WebSettings webSettings= webView_covid.getSettings();
         webView_covid.getSettings().setDomStorageEnabled(true);

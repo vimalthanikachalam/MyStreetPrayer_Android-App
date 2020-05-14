@@ -22,10 +22,7 @@ import android.util.SparseBooleanArray;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 
-import com.mystreetprayer.app.MainActivity;
-import com.mystreetprayer.app.PrayerSongs_Activity;
 import com.mystreetprayer.app.R;
 import com.mystreetprayer.app.alarmclock.model.Alarm;
 import com.mystreetprayer.app.alarmclock.util.AlarmUtils;
