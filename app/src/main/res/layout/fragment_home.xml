@@ -2,39 +2,174 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/android_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f1f7">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appbar_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="220dp"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+
+<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="#f2f1f7"-->
+<!--            app:contentScrim="#EDF1F7"-->
+<!--            app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
+
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/relativelayout"-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="fill_parent">-->
+
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/image_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/verse_img_11"-->
+<!--                    android:contentDescription="@string/todo"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    app:layout_collapseMode="parallax"-->
+<!--                    app:layout_collapseParallaxMultiplier="0.7" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="#000"-->
+<!--                    android:alpha=".3"-->
+<!--                    android:contentDescription="@string/todo"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    app:layout_collapseMode="parallax"-->
+<!--                    app:layout_collapseParallaxMultiplier="0.7" />-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignStart="@id/image_view"-->
+<!--                    android:layout_alignTop="@id/image_view"-->
+<!--                    android:layout_alignEnd="@id/image_view"-->
+<!--                    android:layout_alignBottom="@id/image_view"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    android:fontFamily="@font/bebus_bold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:hint="@string/fetching_data"-->
+<!--                    android:padding="6dp"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="22sp" />-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignBottom="@id/image_view"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    android:fontFamily="@font/bebus_bold"-->
+<!--                    android:gravity="end"-->
+<!--                    android:hint="@string/verse"-->
+<!--                    android:paddingStart="1dp"-->
+<!--                    android:paddingEnd="28dp"-->
+<!--                    android:paddingBottom="9dp"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="22sp" />-->
+
+<!--            </RelativeLayout>-->
+
+
+<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginTop="24dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#f2f1f7"
-            app:contentScrim="#EDF1F7"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:orientation="vertical"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
 
             <RelativeLayout
-                android:id="@+id/relativelayout"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                >
 
                 <ImageView
-                    android:id="@+id/image_view"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:backgroundTint = "#777"
+                    android:background="@drawable/ic_day_icon"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/user_greeting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:hint="@string/nameplaceholder"
+                    android:textStyle="bold"
+                    android:paddingStart="38dp"
+                    android:paddingEnd="0dp"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"/>
+
+                <ImageButton
+                    android:id="@+id/notification_view_home"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:src="@drawable/ic_notification_icon"
+                    android:layout_alignParentEnd="true"
+                    android:focusable="true" />
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/banner_cardView"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:orientation="vertical"
+                app:cardCornerRadius="12dp"
+                android:layout_marginBottom="4dp"
+                android:stateListAnimator="@anim/lif_on_touch"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                android:clickable="true"
+                app:cardElevation="2dp"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/image_view1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/verse_img_11"
-                    android:contentDescription="@string/todo"
+                    android:src="@drawable/verse_img_9"
+                    android:layout_gravity="center"
                     android:scaleType="centerCrop"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.7" />
+                     />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -42,24 +177,18 @@
                     android:background="#000"
                     android:alpha=".3"
                     android:contentDescription="@string/todo"
-                    android:scaleType="centerCrop"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.7" />
+                    />
 
                 <TextView
                     android:id="@+id/daily_verse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/verse_author"
-                    android:layout_alignStart="@id/image_view"
-                    android:layout_alignTop="@id/image_view"
-                    android:layout_alignEnd="@id/image_view"
-                    android:layout_alignBottom="@id/image_view"
                     android:layout_margin="1dp"
                     android:fontFamily="@font/bebus_bold"
                     android:gravity="center"
+                    android:layout_gravity="center"
                     android:hint="@string/fetching_data"
-                    android:padding="6dp"
+                    android:padding="8dp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
@@ -68,44 +197,27 @@
                     android:id="@+id/verse_author"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/image_view"
                     android:layout_margin="1dp"
+                    android:layout_gravity="bottom"
                     android:fontFamily="@font/bebus_bold"
                     android:gravity="end"
                     android:hint="@string/verse"
                     android:paddingStart="1dp"
                     android:paddingEnd="28dp"
-                    android:paddingBottom="9dp"
+                    android:paddingBottom="18dp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
 
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedscrollview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:orientation="vertical"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp">
 
             <!-- CardView that contains a Images and texts -->
             <!--Register Prayer Time-->
+
+
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/register_PrayerTime"
                 android:layout_width="match_parent"
@@ -133,6 +245,7 @@
                         android:padding="22dp" />
 
                     <TextView
+                        android:id="@+id/register_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -143,20 +256,22 @@
                         android:text="@string/register_prayer_time_home"
                         android:textSize="18sp" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="54dp"
-                        android:alpha=".5"
-                        android:background="@drawable/ic_arrow_right_24dp"
-                        android:contentDescription="@string/todo"
-                        android:padding="18dp" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginStart="54dp"-->
+<!--                        android:alpha=".5"-->
+<!--                        android:background="@drawable/ic_arrow_right_24dp"-->
+<!--                        android:contentDescription="@string/todo"-->
+<!--                        android:padding="18dp" />-->
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
+
+
 
             <!--Column 2-->
             <LinearLayout
@@ -177,7 +292,7 @@
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
-                    app:cardCornerRadius="6dp"
+                    app:cardCornerRadius="8dp"
                     app:cardElevation="2dp"
                     app:cardUseCompatPadding="true">
 
@@ -314,6 +429,7 @@
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal"
+                    android:stateListAnimator="@anim/lif_on_touch"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="2dp"
                     app:cardUseCompatPadding="true">
@@ -635,12 +751,24 @@
             <!--Spacer-->
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="58dp" />
+                android:layout_height="128dp" />
 
         </LinearLayout>
 
 
+
+
     </androidx.core.widget.NestedScrollView>
+
+
+    <ProgressBar
+        android:id="@+id/registertime_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

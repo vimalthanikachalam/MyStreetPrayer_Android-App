@@ -2,6 +2,7 @@ package com.mystreetprayer.app.alarmclock.service;
 
 import android.app.AlarmManager;
 import android.app.AlarmManager.AlarmClockInfo;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,10 +15,18 @@ import android.graphics.BitmapFactory;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.util.SparseBooleanArray;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -61,7 +70,6 @@ public final class AlarmReceiver extends BroadcastReceiver {
         Log.e(TAG, "Alarm is null", new NullPointerException());
         return;
     }
-
 
     final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     final int id = alarm.notificationId();
@@ -108,6 +116,8 @@ public final class AlarmReceiver extends BroadcastReceiver {
 
     //Convenience method for setting a notification
     public static void setReminderAlarm(Context context, Alarm alarm) {
+
+
 
         //Check whether the alarmclock is set to run on any days
         if (!AlarmUtils.isAlarmActive(alarm)) {

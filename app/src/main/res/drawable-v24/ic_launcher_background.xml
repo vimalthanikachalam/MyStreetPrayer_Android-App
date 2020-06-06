@@ -2,10 +2,10 @@
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="1186.4"
-    android:viewportHeight="1186.4">
+    android:viewportWidth="1186.38"
+    android:viewportHeight="1186.38">
   <path
-      android:pathData="M0,0h1186.4v1186.38h-1186.4z">
+      android:pathData="M0,0h1186.38v1186.38h-1186.38z">
     <aapt:attr name="android:fillColor">
       <gradient 
           android:startY="593.19"

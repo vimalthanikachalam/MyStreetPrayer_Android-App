@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.FrameMetricsAggregator;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -31,12 +32,28 @@ public class KPC_VideoAdapter extends FirestoreRecyclerAdapter<KPC_Videos_Firest
     }
 
     @Override
+    public int getItemViewType(int position) {
+
+        if(getItem(position).getVideoExpanded().equals("true")){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return super.getItemCount();
+    }
+
+    @Override
     protected void onBindViewHolder(@NonNull KPC_VideoAdapter.VideoHolder holder, int position, @NonNull KPC_Videos_Firestore model) {
         holder.textViewTitle.setText(model.getVideoTitle());
         holder.textViewDescription.setText(model.getVideoDescription());
         holder.textViewwebViewUrl.setText(model.getVideoUrl());
         holder.textViewimageViewUrl.setText(model.getVideoImage());
         holder.textViewSort.setText(String.valueOf(model.getSort()));
+        holder.videotype.setText(model.getVideoExpanded());
 
         if(model.getVideoImage() != null && ! model.getVideoImage().isEmpty()){
             Picasso.get().load(getItem(position).getVideoImage()).error(R.drawable.video_error)
@@ -51,11 +68,16 @@ public class KPC_VideoAdapter extends FirestoreRecyclerAdapter<KPC_Videos_Firest
     @NonNull
     @Override
     public KPC_VideoAdapter.VideoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.videos_card,
-                parent, false);
-        return new VideoHolder(view);
 
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view;
 
+        if( viewType == 0){
+            view = layoutInflater.inflate(R.layout.videos_card, parent, false);
+            return new VideoHolder(view);
+        }
+            view = layoutInflater.inflate(R.layout.videos_card_large, parent, false);
+            return new VideoHolder(view);
     }
 
     class VideoHolder extends RecyclerView.ViewHolder {
@@ -65,8 +87,7 @@ public class KPC_VideoAdapter extends FirestoreRecyclerAdapter<KPC_Videos_Firest
         TextView textViewimageViewUrl;
         TextView textViewSort;
         ImageView imageViewBnnerImage;
-
-
+        TextView videotype;
 
          VideoHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +97,7 @@ public class KPC_VideoAdapter extends FirestoreRecyclerAdapter<KPC_Videos_Firest
             textViewimageViewUrl = itemView.findViewById(R.id.video_image_url);
             imageViewBnnerImage = itemView.findViewById(R.id.video_image);
             textViewSort = itemView.findViewById(R.id.video_sort_order);
+            videotype = itemView.findViewById(R.id.video_view_type);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

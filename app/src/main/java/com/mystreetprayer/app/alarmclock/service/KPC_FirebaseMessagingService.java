@@ -17,6 +17,7 @@ import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.mystreetprayer.app.KnowTheTruth;
+import com.mystreetprayer.app.MainActivity;
 import com.mystreetprayer.app.NotificationActivity;
 import com.mystreetprayer.app.PrayerPoints;
 import com.mystreetprayer.app.PrayerSongWeb;
@@ -105,8 +106,7 @@ public class KPC_FirebaseMessagingService extends FirebaseMessagingService {
 
 
         else{
-
-            notificationIntent = new Intent(this, RegisterTimeActivity.class);
+            notificationIntent = new Intent(this, MainActivity.class);
             notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 

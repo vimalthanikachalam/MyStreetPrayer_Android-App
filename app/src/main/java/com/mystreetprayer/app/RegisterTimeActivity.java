@@ -20,14 +20,24 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.mystreetprayer.app.alarmclock.ui.AlarmMainActivity;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import io.opencensus.tags.Tag;
@@ -43,12 +53,23 @@ public class RegisterTimeActivity extends AppCompatActivity implements  AdapterV
     PrayerTimeData prayerTimeData;
     Spinner registerSpinner;
     private String gender = "";
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_time);
 
+        //firestoreData();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+//        if(firebaseAuth.getCurrentUser() != null){
+//
+//            Toast.makeText(this, "User"+ firebaseAuth.getUid(), Toast.LENGTH_SHORT).show();
+//        }else {
+//            Toast.makeText(this, "Nooo  User", Toast.LENGTH_SHORT).show();
+//        }
 
 
         //Get Register ID's
@@ -61,10 +82,8 @@ public class RegisterTimeActivity extends AppCompatActivity implements  AdapterV
         usermessage = (EditText) findViewById(R.id.user_message);
         getPrayerData = (Button) findViewById(R.id.get_register_data);
         prayerTimeData = new PrayerTimeData();
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("UserPrayerTime");
-
-
-
 
         getPrayerData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,39 +133,36 @@ public class RegisterTimeActivity extends AppCompatActivity implements  AdapterV
                 if(TextUtils.isEmpty(registerdtime)){
                     mTimePicker.setError("Please Set Prayer Time");
                     Toast.makeText(RegisterTimeActivity.this, "Please Set Prayer Time", Toast.LENGTH_SHORT).show();
-                    return;
                 }
                 else {
-                    Toast.makeText(RegisterTimeActivity.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
-                        prayerTimeData.setUsernameData(username.getText().toString().trim());
-                        prayerTimeData.setUseremailData(useremail.getText().toString().trim());
-                        prayerTimeData.setUserphoneData(userphone.getText().toString().trim());
-                        prayerTimeData.setUseraddressData(useraddress.getText().toString().trim());
-                        prayerTimeData.setUserchurchData(userchurch.getText().toString().trim());
-                        prayerTimeData.setUserpastornameData(userpastorname.getText().toString().trim());
-                        prayerTimeData.setUsermessageData(usermessage.getText().toString().trim());
-                        prayerTimeData.setUserTimeData(mTimePicker.getText().toString().trim());
-                        prayerTimeData.setUserpraydaysData(registerSpinner.getSelectedItem().toString().trim());
-                        prayerTimeData.setUsergenderData(gender);
-                        databaseReference.push().setValue(prayerTimeData);
 
+                    String userID = firebaseAuth.getCurrentUser().getUid();
+                    Map<String,Object> prayerTime = new HashMap<>();
+
+                    prayerTime.put("name",username.getText().toString().trim());
+                    prayerTime.put("phone", userphone.getText().toString().trim());
+                    prayerTime.put("email", useremail.getText().toString().trim());
+                    prayerTime.put("address", useraddress.getText().toString().trim());
+                    prayerTime.put("church", userchurch.getText().toString().trim());
+                    prayerTime.put("pastorName", userpastorname.getText().toString().trim());
+                    prayerTime.put("message", usermessage.getText().toString().trim());
+                    prayerTime.put("prayerTime", mTimePicker.getText().toString().trim());
+                    prayerTime.put("weekdays", registerSpinner.getSelectedItem().toString().trim());
+                    prayerTime.put("gender", gender);
+                    prayerTime.put("prayerRegistration", "true");
+
+                    Task<Void> documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
+                            .update(prayerTime)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(RegisterTimeActivity.this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                     Intent Alramintent = new Intent(RegisterTimeActivity.this, AlarmMainActivity.class);
                     startActivity(Alramintent);
                     finish();
-
-//                    databaseReference.push().setValue(prayerTimeData).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Log.d(TAG, "onSuccess: Registration Successful! "+ username);
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.d(TAG, "onFailure: " + e.toString());
-//
-//                        }
-//                    });
                 }
             }
         });
@@ -254,6 +270,10 @@ public class RegisterTimeActivity extends AppCompatActivity implements  AdapterV
                     break;
         }
     }
+
+
+
+
 
 }
 

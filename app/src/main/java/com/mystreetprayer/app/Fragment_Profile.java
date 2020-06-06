@@ -14,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -45,6 +48,17 @@ public class Fragment_Profile extends Fragment {
 
         visitWebsite = (LinearLayout) rootView.findViewById(R.id.visitWebsite);
         prayerTimeProfile = (LinearLayout) rootView.findViewById(R.id.profile_Prayer_Time);
+
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.profile_toolbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        assert activity != null;
+        activity.setSupportActionBar(toolbar);
+        Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setTitle("More");
+
+//         Toolbar profileToolbar = (Toolbar) rootView.findViewById(R.id.profile_toolbar);
+//        profileToolbar.setTitle("More");
 
         LinearLayout whatsApp = (LinearLayout) rootView.findViewById(R.id.profile_whatsapp);
         Button logOutbtn = (Button) rootView.findViewById(R.id.logout);
@@ -192,6 +206,6 @@ public class Fragment_Profile extends Fragment {
         String getUSerName = sharedPreferences.getString("username", "");
         userNameProfile.setText(getUSerName);
 
-        requireActivity().setTitle("More");
+       // requireActivity().setTitle("More");
     }
 }

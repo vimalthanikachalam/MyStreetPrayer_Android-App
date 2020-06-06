@@ -1,7 +1,9 @@
 package com.mystreetprayer.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -14,14 +16,22 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import java.util.Objects;
 
 
 public class Fragment_Ignite extends Fragment {
 
     private WebView webView_ignite;
     private ProgressBar progressBarIgnite;
+    AppCompatActivity activity;
 
     @Nullable
     @Override
@@ -30,6 +40,16 @@ public class Fragment_Ignite extends Fragment {
 
         webView_ignite =(WebView) rootView.findViewById(R.id.igniteWebView);
         progressBarIgnite = (ProgressBar) rootView.findViewById(R.id.igniteProgressBar);
+
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.ignite_toolbar);
+        activity = (AppCompatActivity) getActivity();
+        assert activity != null;
+
+        activity.setSupportActionBar(toolbar);
+        Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setTitle("Ignite Service");
+
 
         final SwipeRefreshLayout swipeRefreshLayout = rootView.findViewById(R.id.ignite_sr);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -44,6 +64,7 @@ public class Fragment_Ignite extends Fragment {
 
         return rootView;
     }
+
 
     private void ingiteWebView() {
         webView_ignite.loadUrl("https://mystreetprayer.com/ignite-service/");
@@ -75,12 +96,23 @@ public class Fragment_Ignite extends Fragment {
 
     }
 
-
-
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().setTitle("Ignite");
+        //getActivity().setTitle("Ignite");
         
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(getActivity());
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

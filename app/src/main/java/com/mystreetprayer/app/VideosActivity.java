@@ -3,6 +3,7 @@ package com.mystreetprayer.app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,9 +50,18 @@ public class VideosActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 
+        CardView audioSermons = (CardView) findViewById(R.id.audio_sermons);
+        audioSermons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sermons_webView = new Intent(VideosActivity.this, AudioSermonsActivity.class);
+                startActivity(sermons_webView);
+            }
+        });
+
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.create_new_video);
         //Enable only for Admin
-        floatingActionButton.setVisibility(View.GONE);
+        //floatingActionButton.setVisibility(View.GONE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +97,6 @@ public class VideosActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(videosAdapter);
-
 
         videosAdapter.setOnItemClickListerVideo(new KPC_VideoAdapter.OnItemClickListerner() {
             @Override

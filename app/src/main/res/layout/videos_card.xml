@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="124dp"
     android:layout_marginLeft="@dimen/spacing_large"
     android:layout_marginTop="@dimen/spacing_large"
     android:layout_marginRight="@dimen/spacing_large"
@@ -13,90 +13,279 @@
     app:cardCornerRadius="6dp"
     app:cardElevation="2dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="124dp">
 
-            <ImageView
-                android:id="@+id/video_image"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/todo"
-                android:scaleType="centerCrop"
-                android:src="@drawable/video_default" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha=".3"
-                android:background="#000"
-                android:contentDescription="@string/todo"
-                android:scaleType="centerCrop" />
-
-            <ImageView
-                android:id="@+id/video_icon"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/todo"
-                android:scaleType="centerCrop"
-                android:src="@drawable/video_play" />
-
-            <TextView
-                android:id="@+id/video_view_title"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/spacing_large"
-                android:maxLines="1"
-                android:text="@string/video_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="@android:color/white" />
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="140dp"
+                    android:layout_height="124dp">
+
+                    <ImageView
+                        android:id="@+id/video_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/video_error" />
+
+                    <TextView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/video_play"
+                        android:padding="10dp"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="124dp"
+                    android:paddingEnd="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingStart="5dp">
+
+                    <RelativeLayout
+                        android:id="@+id/lyt_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/ripple_overflow"
+                            android:layout_toStartOf="@+id/ripple_overflow"
+                            android:paddingTop="8dp">
+
+                            <TextView
+                                android:id="@+id/video_view_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:maxLines="2"
+                                android:text="Title"
+                                android:textColor="@color/colorText"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/video_view_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_below="@+id/video_view_title"
+                                android:layout_marginTop="4dp"
+                                android:textSize="11sp"
+                                android:text="Entertainment" />
+
+                        </RelativeLayout>
+
+                        <com.balysv.materialripple.MaterialRippleLayout
+                            android:id="@+id/ripple_overflow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:paddingTop="3dp"
+                            app:mrl_rippleAlpha="0.2"
+                            app:mrl_rippleColor="@color/colorRipple"
+                            app:mrl_rippleDelayClick="false"
+                            app:mrl_rippleHover="true"
+                            app:mrl_rippleOverlay="true">
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:scaleType="centerCrop"-->
+<!--                                android:src="@drawable/ic_arrow_right_24dp" />-->
+
+                        </com.balysv.materialripple.MaterialRippleLayout>
+
+                    </RelativeLayout>
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@+id/lyt_content"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:text="1 week ago" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/space"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:paddingLeft="3dp"-->
+<!--                            android:textSize="12sp"-->
+<!--                            android:paddingRight="3dp"-->
+<!--                            android:text="" />-->
+
+<!--                        &lt;!&ndash;                        <TextView&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            android:id="@+id/total_views"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            android:textSize="@dimen/text_size_medium"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            android:text="854 views" />&ndash;&gt;-->
+
+<!--                    </LinearLayout>-->
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/video_view_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:text="@string/video_description"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/grey_600" />
+                <TextView
+                    android:id="@+id/video_view_priority"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/video_web_url"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
 
-        <TextView
-            android:id="@+id/video_view_priority"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
+                <TextView
+                    android:id="@+id/video_image_url"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
 
-        <TextView
-            android:id="@+id/video_web_url"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
+                <TextView
+                    android:id="@+id/video_sort_order"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
 
-        <TextView
-            android:id="@+id/video_image_url"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
+                <TextView
+                    android:id="@+id/video_view_type"
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_height="0dp" />
 
-        <TextView
-            android:id="@+id/video_sort_order"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-
-    </LinearLayout>
 
 </androidx.cardview.widget.CardView>
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginLeft="@dimen/spacing_large"-->
+<!--    android:layout_marginTop="@dimen/spacing_large"-->
+<!--    android:layout_marginRight="@dimen/spacing_large"-->
+<!--    android:clickable="true"-->
+<!--    android:focusable="true"-->
+<!--    android:foreground="?android:attr/selectableItemBackground"-->
+<!--    android:visibility="visible"-->
+<!--    app:cardCornerRadius="6dp"-->
+<!--    app:cardElevation="2dp">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/video_image"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:contentDescription="@string/todo"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/video_default" />-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:alpha=".3"-->
+<!--                android:background="#000"-->
+<!--                android:contentDescription="@string/todo"-->
+<!--                android:scaleType="centerCrop" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/video_icon"-->
+<!--                android:layout_width="70dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:contentDescription="@string/todo"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/video_play" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/video_view_title"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_margin="@dimen/spacing_large"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="@string/video_title"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Headline"-->
+<!--                android:textColor="@android:color/white" />-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/video_view_description"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="12dp"-->
+<!--                android:text="@string/video_description"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--                android:textColor="@color/grey_600" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/video_view_priority"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/video_web_url"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/video_image_url"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/video_sort_order"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/video_view_type"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:text=""-->
+<!--            android:layout_height="0dp" />-->
+
+<!--    </LinearLayout>-->
+
+<!--</androidx.cardview.widget.CardView>-->

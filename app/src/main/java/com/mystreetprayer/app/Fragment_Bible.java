@@ -16,14 +16,11 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import java.util.Objects;
 
 
 public class Fragment_Bible extends Fragment {
@@ -40,14 +37,14 @@ public class Fragment_Bible extends Fragment {
         webView_bible =(WebView) rootView.findViewById(R.id.kjvwebview);
         progressBarBible = (ProgressBar) rootView.findViewById(R.id.kjvProgressBar);
 
-        final SwipeRefreshLayout swipeRefreshLayout = rootView.findViewById(R.id.bible_sr);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                bibleWebView();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.bible_toolbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        assert activity != null;
+        activity.setSupportActionBar(toolbar);
+        Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setTitle("KJV Bible");
+
 
         bibleWebView();
 
@@ -56,8 +53,7 @@ public class Fragment_Bible extends Fragment {
 
     private void bibleWebView() {
 
-        webView_bible.loadUrl("https://mystreetprayer-d7aa2.firebaseapp.com/");
-//      webView_bible.loadUrl("https://www.kingjamesbibleonline.org/");
+        webView_bible.loadUrl("https://www.bible.com/bible/1/GEN.1.KJV/");
         progressBarBible.setMax(100);
 
         WebSettings webSettings= webView_bible.getSettings();
@@ -75,6 +71,7 @@ public class Fragment_Bible extends Fragment {
                 progressBarBible.setProgress(newProgress);
             }
         });
+
         webView_bible.setWebViewClient(new WebViewClient(){
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -104,7 +101,7 @@ public class Fragment_Bible extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().setTitle("Bible");
+        //getActivity().setTitle("Bible");
     }
 
 }

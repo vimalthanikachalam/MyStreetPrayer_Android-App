@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class UploadVideos extends AppCompatActivity {
 
-    private EditText videoTitle, videoDescription, videoWebUrl, videoImageUrl, videoSortOder;
+    private EditText videoTitle, videoDescription, videoWebUrl, videoImageUrl, videoSortOder, videoType;
     private TextView videoCount;
     private int count;
 
@@ -43,7 +43,7 @@ public class UploadVideos extends AppCompatActivity {
         videoImageUrl = findViewById(R.id.video_create_imageurl);
         videoSortOder = findViewById(R.id.video_sort_input);
         videoCount = findViewById(R.id.videos_count);
-
+        videoType = findViewById(R.id.video_type);
 
 
 
@@ -84,9 +84,10 @@ public class UploadVideos extends AppCompatActivity {
         String description = videoDescription.getText().toString();
         String webUrl = videoWebUrl.getText().toString();
         String imageUrl = videoImageUrl.getText().toString();
+        String video_view_type = videoType.getText().toString();
         int sortOrder = Integer.parseInt(videoSortOder.getText().toString());
 
-        if (title.trim().isEmpty() || description.trim().isEmpty() || webUrl.trim().isEmpty()) {
+        if (title.trim().isEmpty() || description.trim().isEmpty() || webUrl.trim().isEmpty() || video_view_type.trim().isEmpty()) {
             Toast.makeText(this, "Input value cannot be empty", Toast.LENGTH_LONG).show();
             return;
         }
@@ -95,7 +96,7 @@ public class UploadVideos extends AppCompatActivity {
                 .collection("Videos");
 
 
-        videoRef.add(new KPC_Videos_Firestore(title, description, webUrl, imageUrl, sortOrder));
+        videoRef.add(new KPC_Videos_Firestore(title, description, webUrl, imageUrl, video_view_type, sortOrder));
 
         Toast.makeText(this, "Video Updated", Toast.LENGTH_SHORT).show();
         finish();

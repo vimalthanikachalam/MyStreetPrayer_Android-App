@@ -4,6 +4,6 @@
         android:id="@+id/notification"
         android:title=""
         app:showAsAction="always"
-        android:icon="@drawable/ic_notification"
+        android:icon="@drawable/ic_notification_icon"
         />
 </menu>

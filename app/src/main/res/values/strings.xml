@@ -19,6 +19,8 @@
     <string name="already_registerd">Already Registerd?</string>
     <string name="login">Login!</string>
 
+    <string name="permissiondialog">We Require Calender Permission to Send DailyVerse Notification. \n \nThank you for Understanding!</string>
+
 
     <string-array name="spinner_register_time">
         <item>Every Day</item>
@@ -56,7 +58,7 @@
     <string name="action_delete">Delete Prayer Time</string>
 
     <!-- Alarm Landing Page Activity/Fragment -->
-    <string name="launch_main_activity">Launch Main Activity</string>
+    <string name="launch_main_activity">Open App</string>
     <string name="dismiss">Dismiss</string>
     <string name="prayer_time">Prayer Time</string>
 
@@ -78,7 +80,7 @@
     <string name="uploadImage_link">Image Link (Optional)</string>
     <string name="uploadAction_button">Action Button (Optional) Default Learn More..</string>
     <string name="upload_note">Note*: Once you save the notification, it will be visible to all the users! You cannot undo the action.</string>
-    <string name="app_title">Karnataka Prayer Call 24/7</string>
+    <string name="app_title">Kings Prayer Call 24/7</string>
     <string name="welcome_to_the_app">Welcome to the App!</string>
     <string name="new_user">New User? Register</string>
     <string name="memeber">Member Already! Login</string>
@@ -115,7 +117,7 @@
     <string name="note_once">Note*: Once you save the Video, it will be visible to all the users! You cannot undo this action.</string>
     <string name="videos">Videos</string>
     <string name="save">Save</string>
-    <string name="cancle_sound">Stop Alarm</string>
+    <string name="cancle_sound">Pray Now!</string>
     <string name="set_prayer_reminder">Set Prayer Reminder</string>
     <string name="your_prayer_timeSet">Your Prayer Time is Set Successfully!</string>
     <string name="done">Done</string>
@@ -156,8 +158,8 @@
     <string name="religious_organization">Religious organization in Bengaluru, Karnataka</string>
     <string name="copyrighta">©2020, KPC 24/7 All rights Reserved!</string>
     <string name="last_update">Last Update</string>
-    <string name="update_year">May 2020</string>
-    <string name="app_version">2.1.1</string>
+    <string name="update_year">June 2020</string>
+    <string name="app_version">2.3.0</string>
     <string name="version_app">Version</string>
     <string name="any_questions">Any Questions, Please Contact Us.</string>
     <string name="home_bottom_nav">Home</string>
@@ -165,5 +167,13 @@
     <string name="ignite_bottom_nav">Ignite</string>
     <string name="more_bottom_nav">More</string>
     <!--End of Alarm Strings-->
+
+    <!--Greeting Message-->
+    <string name="morning">Good Morning, %1$s</string>
+    <string name="afternoon">Good Afternoon, %1$s</string>
+    <string name="evening">Good Evening, %1$s</string>
+    <string name="night">Good Night, %1$s</string>
+    <string name="nameplaceholder">\?Name</string>
+    <string name="lyrics_upload_instruction">Note : Only Admins are allowed to upload the Lyrics!!! Should not misuse.\n\nenum(pref, save_activity_log).execute();</string>
 
 </resources>

@@ -2,9 +2,10 @@ package com.mystreetprayer.app.alarmclock.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mystreetprayer.app.R;
 
 public final class AlarmLandingPageActivity extends AppCompatActivity {
+    Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +29,10 @@ public final class AlarmLandingPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alarm_activity_landing_page);
 
+    }
+
+    public void stopPrayerAlarm(View v) {
+        Log.w("KPC", "Destroyed Activity!");
     }
 
     public static Intent launchIntent(Context context) {

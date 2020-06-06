@@ -5,6 +5,7 @@
     <color name="textPrimaryDarkColor">#ec6d06</color>
     <color name="colorAccent">#ef6c00</color>
     <color name="white">#FFFFFF</color>
+    <color name="appbackground">#f2f1f7</color>
 
     <!--Alarm Color Def-->
     <color name="primary">#00BCD4</color>
@@ -353,6 +354,20 @@
         <item type="color">#607d8b</item>
         <item type="color">#ff9800</item>
     </array>
+
+
+    <!--others-->
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGrey">#96989A</color>
+    <color name="colorDarkGrey">#4D4D4D</color>
+    <color name="colorText">#202020</color>
+    <color name="colorRipple">#C2C2C2</color>
+    <color name="colorCardView">#FFFFFF</color>
+    <color name="colorCategory">#ECA324</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorToolbarGrey">#757575</color>
+    <color name="colorLine">#DEDEDE</color>
 
 </resources>
 
