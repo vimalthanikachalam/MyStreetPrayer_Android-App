@@ -61,7 +61,7 @@ public class VideosActivity extends AppCompatActivity {
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.create_new_video);
         //Enable only for Admin
-        //floatingActionButton.setVisibility(View.GONE);
+        floatingActionButton.setVisibility(View.VISIBLE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +108,7 @@ public class VideosActivity extends AppCompatActivity {
                 Intent webLink = new Intent(Intent.ACTION_VIEW, Uri.parse(videourl));
                 startActivity(webLink);
 
-                Toast.makeText(VideosActivity.this, "Playing Video : " + videourl, Toast.LENGTH_SHORT).show();
+                Toast.makeText(VideosActivity.this, "Playing Video" , Toast.LENGTH_SHORT).show();
             }
         });
     }

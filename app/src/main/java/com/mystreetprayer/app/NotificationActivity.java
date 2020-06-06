@@ -108,7 +108,7 @@ public class NotificationActivity extends AppCompatActivity {
                 //Launch the Action to External Browser
                 Intent webLink = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(webLink);
-                Toast.makeText(NotificationActivity.this, "Opening : " + url, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationActivity.this, "Opening", Toast.LENGTH_SHORT).show();
             }
         });
 

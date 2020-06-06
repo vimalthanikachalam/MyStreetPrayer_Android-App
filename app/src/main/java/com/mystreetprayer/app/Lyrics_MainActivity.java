@@ -3,14 +3,11 @@ package com.mystreetprayer.app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -26,7 +23,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mystreetprayer.app.alarmclock.adapter.KPC_LyricsAdapter;
-import com.mystreetprayer.app.alarmclock.adapter.KPC_NotificationAdapter;
 import com.mystreetprayer.app.alarmclock.view.KPC_Lyrics_Firestore;
 import com.mystreetprayer.app.alarmclock.view.KPC_Notify_Firestore;
 
@@ -95,9 +91,6 @@ public class Lyrics_MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.sermons_recycler_view);
             recyclerView.setHasFixedSize(true);
 
-//            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
-//            recyclerView.setLayoutManager(layoutManager);
-//            recyclerView.setItemAnimator(new DefaultItemAnimator());
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.setAdapter(lyricsAdapter);
@@ -114,10 +107,7 @@ public class Lyrics_MainActivity extends AppCompatActivity {
                 intent.putExtra("url", url);
                 startActivity(intent);
 
-//                //Launch the Action to External Browser
-//                Intent webLink = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//                startActivity(webLink);
-                Toast.makeText(Lyrics_MainActivity.this, "Opening : " + url, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Lyrics_MainActivity.this, "Opening" , Toast.LENGTH_SHORT).show();
             }
         });
 
