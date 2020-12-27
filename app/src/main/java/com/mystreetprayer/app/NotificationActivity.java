@@ -55,7 +55,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         FloatingActionButton floatingActionButton = findViewById(R.id.create_new_notify);
         //Enable only for admin
-        floatingActionButton.setVisibility(View.VISIBLE);
+        floatingActionButton.setVisibility(View.INVISIBLE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -15,33 +15,32 @@ import android.widget.ProgressBar;
 
 import java.util.Objects;
 
-public class Testimonial extends AppCompatActivity {
+public class PrayerCalender extends AppCompatActivity {
     private WebView webView_Testimonial;
     ProgressBar progressbarTestimonial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_testimonial);
+        setContentView(R.layout.activity_prayer_calender);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Testimonial");
+        getSupportActionBar().setTitle("Prayer Calendar");
 
         webView_Testimonial =(WebView) findViewById(R.id.testimonialweb);
         progressbarTestimonial = (ProgressBar) findViewById(R.id.testimonialProgressBar);
 
+//        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.testimonial_sr);
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                calenderWebView();
+//                swipeRefreshLayout.setRefreshing(false);
+//            }
+//        });
 
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.testimonial_sr);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                covidWebView();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
 
-
-        covidWebView();
+        calenderWebView();
 
     }
 
@@ -52,14 +51,15 @@ public class Testimonial extends AppCompatActivity {
         return true;
     }
 
-    private void covidWebView() {
+    private void calenderWebView() {
 
-        webView_Testimonial.loadUrl("https://mystreetprayer.com/testimony/");
+        webView_Testimonial.loadUrl("https://kpc-prayer-calendar.web.app");
 
         progressbarTestimonial.setMax(50);
         WebSettings webSettings= webView_Testimonial.getSettings();
         webView_Testimonial.getSettings().setDomStorageEnabled(true);
         webView_Testimonial.getSettings().setAppCacheEnabled(true);
+        webView_Testimonial.getSettings().getJavaScriptEnabled();
         webView_Testimonial.getSettings().setLoadsImagesAutomatically(true);
         webView_Testimonial.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webSettings.setJavaScriptEnabled(true);

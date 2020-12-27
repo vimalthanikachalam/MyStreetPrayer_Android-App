@@ -719,7 +719,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginStart="12dp"
-                        android:background="@drawable/ic_testimony"
+                        android:background="@drawable/ic_prayer_calendar"
                         android:contentDescription="@string/todo"
                         android:padding="22dp" />
 
@@ -730,7 +730,7 @@
                         android:layout_marginStart="32dp"
                         android:gravity="center_horizontal"
                         android:lineSpacingExtra="12sp"
-                        android:text="@string/testimonials_title"
+                        android:text="@string/prayer_calender_title"
                         android:textSize="18sp" />
 
                     <ImageView

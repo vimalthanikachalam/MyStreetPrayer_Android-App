@@ -47,7 +47,7 @@ public class Lyrics_MainActivity extends AppCompatActivity {
 
         FloatingActionButton floatingActionButton = findViewById(R.id.create_new_lyrics);
         //Enable only for admin
-        floatingActionButton.setVisibility(View.VISIBLE);
+        floatingActionButton.setVisibility(View.INVISIBLE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

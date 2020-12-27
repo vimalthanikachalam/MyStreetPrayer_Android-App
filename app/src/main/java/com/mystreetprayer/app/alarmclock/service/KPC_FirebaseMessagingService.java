@@ -19,6 +19,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.mystreetprayer.app.KnowTheTruth;
 import com.mystreetprayer.app.MainActivity;
 import com.mystreetprayer.app.NotificationActivity;
+import com.mystreetprayer.app.PrayerCalender;
 import com.mystreetprayer.app.PrayerPoints;
 import com.mystreetprayer.app.PrayerSongWeb;
 import com.mystreetprayer.app.R;
@@ -101,6 +102,11 @@ public class KPC_FirebaseMessagingService extends FirebaseMessagingService {
 
         if(click_action.equals("NOTIFICATION")){
             notificationIntent = new Intent(this, NotificationActivity.class);
+            notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+
+        if(click_action.equals("CALENDAR")){
+            notificationIntent = new Intent(this, PrayerCalender.class);
             notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 

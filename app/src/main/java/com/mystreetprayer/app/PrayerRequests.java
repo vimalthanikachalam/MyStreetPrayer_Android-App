@@ -54,7 +54,7 @@ public class PrayerRequests extends AppCompatActivity {
 
     private void prayerRequestWebView() {
 
-        prayerView.loadUrl("https://mystreetprayer.com/prayer-request-user/");
+        prayerView.loadUrl("https://mystreetprayer.com/prayer-request-user");
 
         progressbarPrayer.setMax(50);
         WebSettings webSettings= prayerView.getSettings();

@@ -61,7 +61,7 @@ public class VideosActivity extends AppCompatActivity {
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.create_new_video);
         //Enable only for Admin
-        floatingActionButton.setVisibility(View.VISIBLE);
+        floatingActionButton.setVisibility(View.INVISIBLE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -67,7 +67,7 @@ public class Fragment_Ignite extends Fragment {
 
 
     private void ingiteWebView() {
-        webView_ignite.loadUrl("https://mystreetprayer.com/ignite-service/");
+        webView_ignite.loadUrl("https://mystreetprayer.com/ignite-service");
         progressBarIgnite.setMax(50);
 
         WebSettings webSettings= webView_ignite.getSettings();

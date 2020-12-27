@@ -68,6 +68,7 @@
         <activity android:name=".PrayerRequests" />
         <activity android:name=".UploadVideos" />
         <activity android:name=".CreateNotificationActivity" />
+
         <activity
             android:name=".NotificationActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -77,10 +78,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".VideosActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Testimonial" />
+
+        <activity
+            android:name=".PrayerCalender">
+            <intent-filter>
+                <action android:name="CALENDAR" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
         <activity android:name=".PrayerPoints">
             <intent-filter>
                 <action android:name="PRAYER" />

@@ -26,7 +26,6 @@ public class PrayerPoints extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prayer_points);
 
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Prayer Request to Pray");
 
@@ -55,7 +54,7 @@ public class PrayerPoints extends AppCompatActivity {
 
     private void prayerPointsWebView() {
 
-        prayerView.loadUrl("https://mystreetprayer.com/prayer-slot/");
+        prayerView.loadUrl("https://mystreetprayer.com/prayer-slot");
 
         progressbarPrayer.setMax(50);
         WebSettings webSettings= prayerView.getSettings();

@@ -1,10 +1,9 @@
 package com.mystreetprayer.app;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -25,16 +24,11 @@ import androidx.fragment.app.Fragment;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.mystreetprayer.app.alarmclock.ui.AlarmMainActivity;
 
 
@@ -95,7 +89,7 @@ public class Fragment_Home extends Fragment {
         CardView knowthetruth = (CardView) rootView.findViewById(R.id.knowtheTruth);
         CardView covid19page = (CardView) rootView.findViewById(R.id.covid_19);
         CardView prayerRequestPage = (CardView) rootView.findViewById(R.id.prayer_request);
-        CardView testimonialPage = (CardView) rootView.findViewById(R.id.testimonial_view);
+        CardView calenderPage = (CardView) rootView.findViewById(R.id.testimonial_view);
         CardView videoPage = (CardView) rootView.findViewById(R.id.videoViewCard);
         CardView prayerRequest = (CardView) rootView.findViewById(R.id.prayerRequestView);
 
@@ -168,11 +162,19 @@ public class Fragment_Home extends Fragment {
             }
         });
 
+//        calenderPage.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Uri uri = Uri.parse("https://kpc-prayer-calendar.web.app");
+//                    Intent visitWebsiteIntent = new Intent(Intent.ACTION_VIEW, uri);
+//                    startActivity(visitWebsiteIntent);
+//                }
+//            });
 
-        testimonialPage.setOnClickListener(new View.OnClickListener() {
+        calenderPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent testimonial = new Intent(getActivity(), Testimonial.class);
+                Intent testimonial = new Intent(getActivity(), PrayerCalender.class);
                 startActivity(testimonial);
             }
         });
@@ -203,6 +205,8 @@ public class Fragment_Home extends Fragment {
 
         return rootView;
     }
+
+
 
 
     //Greeting Message
